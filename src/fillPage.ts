@@ -9,13 +9,13 @@ import { getElement, hide, parseIntSafe, show } from "./util";
 
 const SAVE_FILE_STATS_ID = "save-file-stats";
 
-export const ACHIEVEMENTS_TABLE_ID = "achievements-table";
+const ACHIEVEMENTS_TABLE_ID = "achievements-table";
 const ACHIEVEMENTS_TBODY_ID = "achievements-table-tbody";
 const ACHIEVEMENTS_ALL_UNLOCKED_ID = "achievements-all-unlocked";
 const NUM_ACHIEVEMENTS_UNLOCKED_ID = "num-achievements-unlocked";
 const TOTAL_ACHIEVEMENTS_ID = "total-achievements";
 
-export const COLLECTIBLES_TABLE_ID = "collectibles-table";
+const COLLECTIBLES_TABLE_ID = "collectibles-table";
 const COLLECTIBLES_TBODY_ID = "collectibles-table-tbody";
 const COLLECTIBLES_ALL_TOUCHED_ID = "collectibles-all-touched";
 const NUM_COLLECTIBLES_TOUCHED_ID = "num-collectibles-touched";
