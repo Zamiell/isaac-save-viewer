@@ -1,0 +1,27 @@
+// The configuration file for TypeScript
+{
+  // We extend the standard IsaacScript config
+  // https://github.com/IsaacScript/isaacscript-tsconfig/blob/main/tsconfig.browser.json
+  "extends": "isaacscript-tsconfig/tsconfig.browser.json",
+
+  // https://www.typescriptlang.org/docs/handbook/compiler-options.html
+  "compilerOptions": {
+    // "outDir" specifies the output directory
+    // By default, it will put the compiled ".js" next to the respective ".ts" file,
+    // which will clutter the "src" directory
+    "outDir": "./dist",
+
+    // We need to import the "package.json" file to see what version we are running
+    // By default, this is false
+    "resolveJsonModule": true,
+
+    // Needed for WebPack to work properly
+    "module": "commonjs",
+    "target": "es5",
+  },
+
+  // A list of the TypeScript files to compile
+  "include": [
+    "./src/**/*.ts",
+  ],
+}
