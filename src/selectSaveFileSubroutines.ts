@@ -9,11 +9,11 @@ export function getSelectSaveFileButton() {
   return getElement(CHOOSE_SAVE_FILE_BUTTON_ID);
 }
 
-export function selectSaveFileError(msg: string) {
+export function selectSaveFileError(err: unknown) {
   const errorElement = getElement(CHOOSE_SAVE_FILE_ERROR_ID);
   show(errorElement);
   const errorTextElement = getElement(CHOOSE_SAVE_FILE_ERROR_TEXT_ID);
-  errorTextElement.innerHTML = msg;
+  errorTextElement.innerHTML = `${err}`;
 }
 
 export function hideSelectSaveFileArea() {

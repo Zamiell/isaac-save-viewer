@@ -10,5 +10,6 @@
     // These are ESLint-only inclusions
     "./.eslintrc.js",
     "./webpack.config.js",
+    "./createKaitai.js",
   ],
 }

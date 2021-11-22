@@ -1,68 +1,118 @@
 import { fillPage } from "./fillPage";
-import { SaveFile, SAVE_FILE_STRUCT } from "./saveFileFormat";
 import { selectSaveFileError } from "./selectSaveFileSubroutines";
-import { DataType } from "./types/DataType";
-import { ensureAllCases } from "./util";
 
-const CORRECT_HEADER = "ISAACNGSAVE09R";
+const HEADER_LENGTH = 16;
 
-const textDecoder = new TextDecoder("utf-8");
+// Run files are ones that contain data for a run that has been exited mid-way through
+// e.g. gamestate1.dat
+const REBIRTH_RUN_HEADER = "ISAACNG_GSR0018";
+const AFTERBIRTH_RUN_HEADER = "ISAACNG_GSR0034";
+const AFTERBIRTH_PLUS_RUN_HEADER = "ISAACNG_GSR0065";
+const REPENTANCE_RUN_HEADER = "ISAACNG_GSR0142";
+const RUN_HEADERS = new Set([
+  REBIRTH_RUN_HEADER,
+  AFTERBIRTH_RUN_HEADER,
+  AFTERBIRTH_PLUS_RUN_HEADER,
+  REPENTANCE_RUN_HEADER,
+]);
+
+// Persistent files are ones that contain data for the entire save file
+// e.g. persistentgamedata1.dat
+const REBIRTH_PERSISTENT_HEADER = "ISAACNGSAVE06R";
+const AFTERBIRTH_PERSISTENT_HEADER = "ISAACNGSAVE08R";
+const AFTERBIRTH_PLUS_AND_REPENTANCE_PERSISTENT_HEADER = "ISAACNGSAVE09R";
+
+// Afterbirth+ actually has 403 achievements, but the size of the array is 404 because there is no
+// 0th achievement
+const NUM_AFTERBIRTH_PLUS_ACHIEVEMENTS = 404;
 
 export function readFile(files: FileList) {
   const file = files[0];
   const inputReader = new FileReader();
-  inputReader.addEventListener("load", loadedFile);
+  inputReader.addEventListener("load", inputReaderLoad);
   inputReader.readAsArrayBuffer(file);
 }
 
-function loadedFile(this: FileReader) {
-  const fileArrayBuffer = this.result;
-  if (fileArrayBuffer === null || typeof fileArrayBuffer === "string") {
-    return;
+function inputReaderLoad(this: FileReader) {
+  try {
+    const isaacSaveFile = parseSaveFile(this);
+    fillPage(isaacSaveFile);
+  } catch (err) {
+    selectSaveFileError(err);
   }
-
-  const parsedFields: Record<string, unknown> = {};
-
-  for (const [fieldName, tuple] of Object.entries(SAVE_FILE_STRUCT)) {
-    const [startByte, endByte, dataType] = tuple;
-    const fieldArrayBuffer = fileArrayBuffer.slice(startByte, endByte);
-    const field = convertArrayBufferToPrimitive(fieldArrayBuffer, dataType);
-    parsedFields[fieldName] = field;
-  }
-
-  const saveFile = parsedFields as unknown as SaveFile;
-
-  if (saveFile.header !== CORRECT_HEADER) {
-    selectSaveFileError(
-      "Error: That is not a valid save file for <i>The Binding of Isaac: Repentance</i>.",
-    );
-    return;
-  }
-
-  fillPage(saveFile);
 }
 
-function convertArrayBufferToPrimitive(
-  arrayBuffer: ArrayBuffer,
-  dataType: DataType,
-) {
-  switch (dataType) {
-    case DataType.STRING: {
-      return textDecoder.decode(arrayBuffer).trim();
-    }
-
-    case DataType.INT_ARRAY: {
-      const typedArray = new Uint8Array(arrayBuffer);
-      return Array.from(typedArray);
-    }
-
-    case DataType.UNKNOWN: {
-      return arrayBuffer;
-    }
-
-    default: {
-      ensureAllCases(dataType);
-      return null;
-    }
+function parseSaveFile(fileReader: FileReader): IsaacSaveFile {
+  const arrayBuffer = fileReader.result;
+  if (arrayBuffer === null || typeof arrayBuffer === "string") {
+    throw new Error("The file array buffer was an unknown type.");
   }
+
+  verifyHeader(arrayBuffer);
+
+  // The format of the save file was reversed by Blade using: https://ide.kaitai.io/
+  // It produces a JavaScript decoder that we leverage here
+  const kaitaiStream = new KaitaiStream(arrayBuffer);
+  const isaacSaveFile = new IsaacSaveFile(kaitaiStream);
+
+  verifyNotAfterbirthPlus(isaacSaveFile);
+
+  return isaacSaveFile;
+}
+
+function verifyHeader(arrayBuffer: ArrayBuffer) {
+  // Before we invoke the real parser, we manually extract the header
+  // (for the purposes of showing a better error message)
+  const headerBytes = arrayBuffer.slice(0, HEADER_LENGTH);
+  const header = arrayBufferToString(headerBytes);
+
+  if (RUN_HEADERS.has(header)) {
+    throw new Error(
+      'That is a file that stores the temporary game state for a specific run.<br />You need to instead select the "persistent" file that contains the data for the entire save file.',
+    );
+  }
+
+  let headerGameType: string | undefined;
+  if (header === REBIRTH_PERSISTENT_HEADER) {
+    headerGameType = "Rebirth";
+  } else if (header === AFTERBIRTH_PERSISTENT_HEADER) {
+    headerGameType = "Afterbirth";
+  }
+
+  if (headerGameType !== undefined) {
+    errorWrongGameType(headerGameType);
+  }
+
+  if (header !== AFTERBIRTH_PLUS_AND_REPENTANCE_PERSISTENT_HEADER) {
+    console.error("Unknown header:");
+    console.error(header);
+    throw new Error(
+      "That is not a valid save file for <i>The Binding of Isaac: Repentance</i>.",
+    );
+  }
+}
+
+function arrayBufferToString(arrayBuffer: ArrayBuffer) {
+  const textDecoder = new TextDecoder("utf-8");
+  const string = textDecoder.decode(arrayBuffer).trim();
+  return removeNullCharacters(string).trim();
+}
+
+function removeNullCharacters(string: string) {
+  return string.replace(/\0/g, "");
+}
+
+function verifyNotAfterbirthPlus(isaacSaveFile: IsaacSaveFile) {
+  // Since Afterbirth+ has the same save file header as Repentance,
+  // we must use some other save file property to tell the difference
+  const achievements = isaacSaveFile.chunks[ChunkType.ACHIEVEMENTS - 1];
+  if (achievements.len === NUM_AFTERBIRTH_PLUS_ACHIEVEMENTS) {
+    errorWrongGameType("Afterbirth+");
+  }
+}
+
+function errorWrongGameType(gameType: string) {
+  throw new Error(
+    `That is a save file for <i>The Binding of Isaac: ${gameType}</i>.<br />This site only supports save files for <i>The Binding of Isaac: Repentance</i>.`,
+  );
 }

@@ -1,41 +1,83 @@
-import { NUM_ACHIEVEMENTS } from "./constants";
 import * as achievements from "./data/achievements.json";
+import * as easterEggs from "./data/easterEggs.json";
 import * as items from "./data/items.json";
-import { SaveFile } from "./saveFileFormat";
 import { hideSelectSaveFileArea } from "./selectSaveFileSubroutines";
-import { AchievementsJSONEntry } from "./types/AchievementsJSONEntry";
-import { ItemsJSONEntry } from "./types/ItemsJSONEntry";
 import { getElement, hide, parseIntSafe, show } from "./util";
 
 const SAVE_FILE_STATS_ID = "save-file-stats";
-
-const ACHIEVEMENTS_TABLE_ID = "achievements-table";
-const ACHIEVEMENTS_TBODY_ID = "achievements-table-tbody";
-const ACHIEVEMENTS_ALL_UNLOCKED_ID = "achievements-all-unlocked";
-const NUM_ACHIEVEMENTS_UNLOCKED_ID = "num-achievements-unlocked";
-const TOTAL_ACHIEVEMENTS_ID = "total-achievements";
-
-const COLLECTIBLES_TABLE_ID = "collectibles-table";
-const COLLECTIBLES_TBODY_ID = "collectibles-table-tbody";
-const COLLECTIBLES_ALL_TOUCHED_ID = "collectibles-all-touched";
-const NUM_COLLECTIBLES_TOUCHED_ID = "num-collectibles-touched";
-const TOTAL_COLLECTIBLES_ID = "total-collectibles";
-
 const WIKI_PREFIX = "https://bindingofisaacrebirth.fandom.com/wiki/";
+type Prefix = "achievements" | "collectibles" | "easter-eggs";
 
-export function fillPage(saveFile: SaveFile) {
+export function fillPage(isaacSaveFile: IsaacSaveFile) {
+  // Build out the tables on the page
+  fillAchievements(isaacSaveFile);
+  fillCollectibles(isaacSaveFile);
+  fillEasterEggs(isaacSaveFile);
+
+  // Show it
   hideSelectSaveFileArea();
-
   const saveFileStats = getElement(SAVE_FILE_STATS_ID);
   show(saveFileStats);
-
-  const numCollectibles = getNumCollectibles();
-
-  fillAchievements(saveFile);
-  fillCollectibles(saveFile, numCollectibles);
 }
 
-function getNumCollectibles() {
+function fillAchievements(isaacSaveFile: IsaacSaveFile) {
+  const achievementChunk = isaacSaveFile.chunks[ChunkType.ACHIEVEMENTS - 1]
+    .body as AchievementsChunk;
+  const ourAchievements = achievementChunk.achievements;
+  const numAchievements = achievementChunk.count - 1; // Account for the 0th element
+
+  fillTable(
+    "achievements",
+    ourAchievements,
+    numAchievements,
+    fillAchievementsAddRow,
+  );
+}
+
+function fillAchievementsAddRow(i: number, tBody: HTMLTableElement) {
+  const rowData: string[] = [];
+
+  const id = i.toString();
+  rowData.push(id);
+
+  const key = id as keyof typeof achievements;
+  const description = achievements[key];
+  if (description === undefined) {
+    throw new Error(`Failed to find the achievement for ID: ${id}`);
+  }
+  const { name, link, inGameDescription, unlockDescription } = description;
+
+  const linkedName =
+    link === "" ? name : `<a href=${WIKI_PREFIX}${link}>${name}</a>`;
+  rowData.push(linkedName);
+
+  const image = `<img src="img/achievements/${id}.png" />`;
+  rowData.push(image);
+
+  rowData.push(inGameDescription);
+  rowData.push(unlockDescription);
+
+  addRow(tBody, rowData);
+}
+
+function fillCollectibles(isaacSaveFile: IsaacSaveFile) {
+  const collectiblesChunk = isaacSaveFile.chunks[ChunkType.COLLECTIBLES - 1]
+    .body as CollectiblesChunk;
+  const ourCollectibles = collectiblesChunk.seenById;
+
+  // We can't derive the number of collectibles from the save file, because they are not contiguous
+  // Instead, we derive it from the JSON file
+  const numCollectibles = getNumCollectiblesFromJSON();
+
+  fillTable(
+    "collectibles",
+    ourCollectibles,
+    numCollectibles,
+    fillCollectiblesAddRow,
+  );
+}
+
+function getNumCollectiblesFromJSON() {
   let numCollectibles = 0;
   for (const key of Object.keys(items)) {
     const collectibleType = parseIntSafe(key);
@@ -51,113 +93,144 @@ function getNumCollectibles() {
   return numCollectibles;
 }
 
-function fillAchievements(saveFile: SaveFile) {
-  const achievementsTable = getElement(ACHIEVEMENTS_TABLE_ID);
-  const achievementsTBody = getElement(
-    ACHIEVEMENTS_TBODY_ID,
-  ) as HTMLTableElement;
-  const achievementsAllUnlockedElement = getElement(
-    ACHIEVEMENTS_ALL_UNLOCKED_ID,
-  );
-  const numAchievementsUnlockedElement = getElement(
-    NUM_ACHIEVEMENTS_UNLOCKED_ID,
-  );
-  const totalAchievementsElement = getElement(TOTAL_ACHIEVEMENTS_ID);
+function fillCollectiblesAddRow(i: number, tBody: HTMLTableElement) {
+  // The collectible IDs are not contiguous, so do nothing if this particular item does not exist
+  const collectibleDescription = getCollectibleDescription(i);
+  if (collectibleDescription === undefined) {
+    return;
+  }
+  const { name } = collectibleDescription;
 
-  let numAchievementsUnlocked = 0;
-  for (let i = 0; i < saveFile.achievements.length; i++) {
-    const achievementUnlocked = saveFile.achievements[i];
-    if (achievementUnlocked !== 0) {
-      numAchievementsUnlocked += 1;
+  const rowData: string[] = [];
+
+  const id = i.toString();
+  rowData.push(id);
+  rowData.push(name);
+
+  const filename = id.padStart(3, "0");
+  const image = `<img src="img/collectibles/collectibles_${filename}.png" />`;
+  rowData.push(image);
+
+  const pools = "Unknown"; // TODO
+  rowData.push(pools);
+
+  addRow(tBody, rowData);
+}
+
+function getCollectibleDescription(id: number) {
+  const key = id as unknown as keyof typeof items;
+  const itemDescription = items[key];
+
+  return itemDescription;
+}
+
+function fillEasterEggs(isaacSaveFile: IsaacSaveFile) {
+  const easterEggChunk = isaacSaveFile.chunks[
+    ChunkType.SPECIAL_SEED_COUNTERS - 1
+  ].body as SpecialSeedCountersChunk;
+  const ourEasterEggs = easterEggChunk.countById;
+
+  // We can't derive the number of easter eggs from the save file, because they are not contiguous
+  // Instead, we derive it from the JSON file
+  const numEasterEggs = getNumEasterEggsFromJSON();
+
+  fillTable("easter-eggs", ourEasterEggs, numEasterEggs, fillEasterEggsAddRow);
+}
+
+function getNumEasterEggsFromJSON() {
+  let numEasterEggs = 0;
+  for (const key of Object.keys(easterEggs)) {
+    const collectibleType = parseIntSafe(key);
+    if (Number.isNaN(collectibleType)) {
       continue;
     }
 
-    const row = achievementsTBody.insertRow();
-    const rowData: string[] = [];
+    numEasterEggs += 1;
+  }
 
-    const id = (i + 1).toString();
-    rowData.push(id);
+  return numEasterEggs;
+}
 
-    const key = id as keyof typeof achievements;
-    const achievementDescription = achievements[key] as AchievementsJSONEntry;
+function fillEasterEggsAddRow(i: number, tBody: HTMLTableElement) {
+  // The easter eggs IDs are not contiguous, so do nothing if this particular item does not exist
+  const easterEggDescription = getEasterEggDescription(i);
+  if (easterEggDescription === undefined) {
+    return;
+  }
+  const { seed, inGameDescription, effectsDescription } = easterEggDescription;
 
-    const { name, link, inGameDescription, unlockDescription } =
-      achievementDescription;
+  const rowData: string[] = [];
 
-    const linkedName =
-      link === "" ? name : `<a href=${WIKI_PREFIX}${link}>${name}</a>`;
-    rowData.push(linkedName);
-    const image = `<img src="img/achievements/${id}.png" />`;
-    rowData.push(image);
-    rowData.push(inGameDescription);
-    rowData.push(unlockDescription);
+  const id = i.toString();
+  rowData.push(id);
+  rowData.push(seed);
+  rowData.push(inGameDescription);
+  rowData.push(effectsDescription);
 
-    for (const data of rowData) {
-      row.insertCell().innerHTML = data;
+  addRow(tBody, rowData);
+}
+
+function getEasterEggDescription(id: number) {
+  const key = id as unknown as keyof typeof easterEggs;
+  const easterEggDescription = easterEggs[key];
+
+  return easterEggDescription;
+}
+
+function fillTable(
+  prefix: Prefix,
+  things: number[],
+  numTotal: number,
+  addRowFunc: (i: number, tBody: HTMLTableElement) => void,
+) {
+  const table = getElement(`${prefix}-table`);
+  const tBody = getElement(`${prefix}-table-tbody`) as HTMLTableElement;
+  const completedElement = getElement(`${prefix}-completed`);
+  const numGottenElement = getElement(`${prefix}-gotten`);
+  const numTotalElement = getElement(`${prefix}-total`);
+
+  let numGotten = 0;
+
+  // There is never a thing corresponding to the 0th element in the array, so we skip it
+  for (let i = 1; i < things.length; i++) {
+    const gotten = things[i] !== 0;
+
+    // Some arrays contain data that is not contiguous
+    if (gotten) {
+      if (
+        (prefix === "collectibles" && !isValidCollectibleID(i)) ||
+        (prefix === "easter-eggs" && !isValidEasterEgg(i))
+      ) {
+        continue;
+      }
+
+      numGotten += 1;
+    } else {
+      addRowFunc(i, tBody);
     }
   }
 
-  numAchievementsUnlockedElement.innerHTML = numAchievementsUnlocked.toString();
-  totalAchievementsElement.innerHTML = NUM_ACHIEVEMENTS.toString();
+  numGottenElement.innerHTML = numGotten.toString();
+  numTotalElement.innerHTML = numTotal.toString();
 
-  if (numAchievementsUnlocked === NUM_ACHIEVEMENTS) {
-    hide(achievementsTable);
+  if (numGotten === numTotal) {
+    hide(table);
   } else {
-    hide(achievementsAllUnlockedElement);
+    hide(completedElement);
   }
 }
 
-function fillCollectibles(saveFile: SaveFile, numCollectibles: number) {
-  const collectiblesTable = getElement(COLLECTIBLES_TABLE_ID);
-  const collectiblesTBody = getElement(
-    COLLECTIBLES_TBODY_ID,
-  ) as HTMLTableElement;
-  const collectiblesAllTouchedElement = getElement(COLLECTIBLES_ALL_TOUCHED_ID);
-  const numCollectiblesTouchedElement = getElement(NUM_COLLECTIBLES_TOUCHED_ID);
-  const totalCollectiblesElement = getElement(TOTAL_COLLECTIBLES_ID);
-
-  let numCollectiblesTouched = 0;
-  for (let i = 0; i < saveFile.touchedCollectibles.length; i++) {
-    const id = (i + 1).toString();
-    const key = id as keyof typeof items;
-    const itemDescription = items[key] as ItemsJSONEntry;
-    if (itemDescription === undefined) {
-      // The collectible IDs are not contiguous
-      continue;
-    }
-
-    const collectibleTouched = saveFile.touchedCollectibles[i];
-    if (collectibleTouched !== 0) {
-      numCollectiblesTouched += 1;
-      continue;
-    }
-
-    const row = collectiblesTBody.insertRow();
-    const rowData: string[] = [];
-
-    rowData.push(id);
-
-    const { name } = itemDescription;
-    rowData.push(name);
-
-    const filename = id.padStart(3, "0");
-    const image = `<img src="img/collectibles/collectibles_${filename}.png" />`;
-    rowData.push(image);
-
-    const pools = "Unknown"; // TODO
-    rowData.push(pools);
-
-    for (const data of rowData) {
-      row.insertCell().innerHTML = data;
-    }
+function addRow(tBody: HTMLTableElement, rowData: string[]) {
+  const row = tBody.insertRow();
+  for (const data of rowData) {
+    row.insertCell().innerHTML = data;
   }
+}
 
-  numCollectiblesTouchedElement.innerHTML = numCollectiblesTouched.toString();
-  totalCollectiblesElement.innerHTML = numCollectibles.toString();
+function isValidCollectibleID(id: number) {
+  return getCollectibleDescription(id) !== undefined;
+}
 
-  if (numCollectiblesTouched === numCollectibles) {
-    hide(collectiblesTable);
-  } else {
-    hide(collectiblesAllTouchedElement);
-  }
+function isValidEasterEgg(id: number) {
+  return getEasterEggDescription(id) !== undefined;
 }

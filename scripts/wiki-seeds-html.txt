@@ -1,0 +1,648 @@
+<tr>
+<td colspan="5" style="background:#142e59"><b>Miscellaneous</b>
+</td></tr>
+<tr>
+<td>16
+</td>
+<td>BASE<br />MENT
+</td>
+<td>Infinite basements
+</td>
+<td><a href="/wiki/The_Basement" class="mw-redirect" title="The Basement">The Basement</a> repeats infinitely. <span title="Disables achievements" style="cursor:help"><img alt="Disables achievements" src="https://static.wikia.nocookie.net/bindingofisaacre_gamepedia/images/1/16/Achievements_Disabled.png/revision/latest/scale-to-width-down/16?cb=20210821164322" decoding="async" title="Disables achievements" width="16" height="16" data-image-name="Achievements Disabled.png" data-image-key="Achievements_Disabled.png" /></span>
+</td></tr>
+<tr>
+<td>11
+</td>
+<td>KEEP<br />AWAY
+</td>
+<td>Tricky pickups
+</td>
+<td><a href="/wiki/Pickups" title="Pickups">Pickups</a> mimic Isaac's movements. <span title="Disables achievements" style="cursor:help"><img alt="Disables achievements" src="https://static.wikia.nocookie.net/bindingofisaacre_gamepedia/images/1/16/Achievements_Disabled.png/revision/latest/scale-to-width-down/16?cb=20210821164322" decoding="async" title="Disables achievements" width="16" height="16" data-image-name="Achievements Disabled.png" data-image-key="Achievements_Disabled.png" /></span>
+</td></tr>
+<tr>
+<td>72
+</td>
+<td><img alt="Added in Afterbirth" src="data:image/gif;base64,R0lGODlhAQABAIABAAAAAP///yH5BAEAAAEALAAAAAABAAEAQAICTAEAOw%3D%3D" decoding="async" title="Added in Afterbirth" width="31" height="14" class="dlc dlc-14 lazyload" data-image-name="Dlc a indicator.png" data-image-key="Dlc_a_indicator.png" data-src="https://static.wikia.nocookie.net/bindingofisaacre_gamepedia/images/9/95/Dlc_a_indicator.png/revision/latest/scale-to-width-down/31?cb=20190418212519" /><br />G0NE<br />S00N
+</td>
+<td>Pickups time out
+</td>
+<td>Pickups quickly fade. This includes pedestal <a href="/wiki/Items" title="Items">items</a>, shop purchases, devil deals, and the Cathedral/Sheol boss chest.
+</td></tr>
+<tr>
+<td>33
+</td>
+<td>FREE<br />2PAY
+</td>
+<td>F2P version
+</td>
+<td>Isaac starts with 69 coins, but all items and consumables must be bought. <span title="Disables achievements" style="cursor:help"><img alt="Disables achievements" src="data:image/gif;base64,R0lGODlhAQABAIABAAAAAP///yH5BAEAAAEALAAAAAABAAEAQAICTAEAOw%3D%3D" decoding="async" title="Disables achievements" width="16" height="16" data-image-name="Achievements Disabled.png" data-image-key="Achievements_Disabled.png" data-src="https://static.wikia.nocookie.net/bindingofisaacre_gamepedia/images/1/16/Achievements_Disabled.png/revision/latest/scale-to-width-down/16?cb=20210821164322" class="lazyload" /></span>
+</td></tr>
+<tr>
+<td>25
+</td>
+<td>PAC1<br />F1SM
+</td>
+<td>Pacifism
+</td>
+<td>Enemies do not take damage. All rooms are considered cleared upon entering them; doors stay open, room rewards spawn, <a href="/wiki/Fatty#Stoney" title="Fatty">Stonies</a> instantly die. When in a boss room, the boss's health bar is used as a timer and slowly ticks down. At the end of the countdown, the trapdoor to the next floor appears. <span title="Disables achievements" style="cursor:help"><img alt="Disables achievements" src="data:image/gif;base64,R0lGODlhAQABAIABAAAAAP///yH5BAEAAAEALAAAAAABAAEAQAICTAEAOw%3D%3D" decoding="async" title="Disables achievements" width="16" height="16" data-image-name="Achievements Disabled.png" data-image-key="Achievements_Disabled.png" data-src="https://static.wikia.nocookie.net/bindingofisaacre_gamepedia/images/1/16/Achievements_Disabled.png/revision/latest/scale-to-width-down/16?cb=20210821164322" class="lazyload" /></span>
+</td></tr>
+<tr>
+<td>32
+</td>
+<td>C0ME<br />BACK
+</td>
+<td>Enemies respawn
+</td>
+<td>Enemies, including bosses, respawn once Isaac leaves the room. Completing a room multiple times does not yield additional pickups. <span title="Disables achievements" style="cursor:help"><img alt="Disables achievements" src="data:image/gif;base64,R0lGODlhAQABAIABAAAAAP///yH5BAEAAAEALAAAAAABAAEAQAICTAEAOw%3D%3D" decoding="async" title="Disables achievements" width="16" height="16" data-image-name="Achievements Disabled.png" data-image-key="Achievements_Disabled.png" data-src="https://static.wikia.nocookie.net/bindingofisaacre_gamepedia/images/1/16/Achievements_Disabled.png/revision/latest/scale-to-width-down/16?cb=20210821164322" class="lazyload" /></span>
+</td></tr>
+<tr>
+<td>71
+</td>
+<td><img alt="Added in Afterbirth" src="data:image/gif;base64,R0lGODlhAQABAIABAAAAAP///yH5BAEAAAEALAAAAAABAAEAQAICTAEAOw%3D%3D" decoding="async" title="Added in Afterbirth" width="31" height="14" class="dlc dlc-14 lazyload" data-image-name="Dlc a indicator.png" data-image-key="Dlc_a_indicator.png" data-src="https://static.wikia.nocookie.net/bindingofisaacre_gamepedia/images/9/95/Dlc_a_indicator.png/revision/latest/scale-to-width-down/31?cb=20190418212519" /><br />N0RE<br />TVRN
+</td>
+<td>Point of no return
+</td>
+<td>Boss rooms lock Isaac in, similar to the <a href="/wiki/Mom" title="Mom">Mom</a> fight.
+</td></tr>
+<tr>
+<td>24
+</td>
+<td>BRWN<br />SNKE
+</td>
+<td>Poopy trail
+</td>
+<td>Isaac leaves a trail of poop behind him as he walks. <span title="Disables achievements" style="cursor:help"><img alt="Disables achievements" src="data:image/gif;base64,R0lGODlhAQABAIABAAAAAP///yH5BAEAAAEALAAAAAABAAEAQAICTAEAOw%3D%3D" decoding="async" title="Disables achievements" width="16" height="16" data-image-name="Achievements Disabled.png" data-image-key="Achievements_Disabled.png" data-src="https://static.wikia.nocookie.net/bindingofisaacre_gamepedia/images/1/16/Achievements_Disabled.png/revision/latest/scale-to-width-down/16?cb=20210821164322" class="lazyload" /></span>
+</td></tr>
+<tr>
+<td>73
+</td>
+<td><img alt="Added in Afterbirth" src="data:image/gif;base64,R0lGODlhAQABAIABAAAAAP///yH5BAEAAAEALAAAAAABAAEAQAICTAEAOw%3D%3D" decoding="async" title="Added in Afterbirth" width="31" height="14" class="dlc dlc-14 lazyload" data-image-name="Dlc a indicator.png" data-image-key="Dlc_a_indicator.png" data-src="https://static.wikia.nocookie.net/bindingofisaacre_gamepedia/images/9/95/Dlc_a_indicator.png/revision/latest/scale-to-width-down/31?cb=20190418212519" /><br />ALM1<br />GHTY
+</td>
+<td>Dog mode
+</td>
+<td>Isaac is invincible. <span title="Disables achievements" style="cursor:help"><img alt="Disables achievements" src="data:image/gif;base64,R0lGODlhAQABAIABAAAAAP///yH5BAEAAAEALAAAAAABAAEAQAICTAEAOw%3D%3D" decoding="async" title="Disables achievements" width="16" height="16" data-image-name="Achievements Disabled.png" data-image-key="Achievements_Disabled.png" data-src="https://static.wikia.nocookie.net/bindingofisaacre_gamepedia/images/1/16/Achievements_Disabled.png/revision/latest/scale-to-width-down/16?cb=20210821164322" class="lazyload" /></span>
+</td></tr>
+<tr>
+<td>55
+</td>
+<td>K1DS<br />M0DE
+</td>
+<td>Kids' co-op mode
+</td>
+<td>Makes <a href="/wiki/Babies" class="mw-redirect" title="Babies">co-op babies</a> invincible. <span title="Disables achievements" style="cursor:help"><img alt="Disables achievements" src="data:image/gif;base64,R0lGODlhAQABAIABAAAAAP///yH5BAEAAAEALAAAAAABAAEAQAICTAEAOw%3D%3D" decoding="async" title="Disables achievements" width="16" height="16" data-image-name="Achievements Disabled.png" data-image-key="Achievements_Disabled.png" data-src="https://static.wikia.nocookie.net/bindingofisaacre_gamepedia/images/1/16/Achievements_Disabled.png/revision/latest/scale-to-width-down/16?cb=20210821164322" class="lazyload" /></span>
+</td></tr>
+<tr>
+<td colspan="5" style="background:#142e59"><b><a href="/wiki/Curses" title="Curses">Curses</a></b>
+</td></tr>
+<tr>
+<td>56
+</td>
+<td><img alt="Added in Afterbirth" src="data:image/gif;base64,R0lGODlhAQABAIABAAAAAP///yH5BAEAAAEALAAAAAABAAEAQAICTAEAOw%3D%3D" decoding="async" title="Added in Afterbirth" width="31" height="14" class="dlc dlc-14 lazyload" data-image-name="Dlc a indicator.png" data-image-key="Dlc_a_indicator.png" data-src="https://static.wikia.nocookie.net/bindingofisaacre_gamepedia/images/9/95/Dlc_a_indicator.png/revision/latest/scale-to-width-down/31?cb=20190418212519" /><br />DARK<br />NESS
+</td>
+<td>Permanent darkness
+</td>
+<td>Permanent Curse of Darkness.
+</td></tr>
+<tr>
+<td>57
+</td>
+<td><img alt="Added in Afterbirth" src="data:image/gif;base64,R0lGODlhAQABAIABAAAAAP///yH5BAEAAAEALAAAAAABAAEAQAICTAEAOw%3D%3D" decoding="async" title="Added in Afterbirth" width="31" height="14" class="dlc dlc-14 lazyload" data-image-name="Dlc a indicator.png" data-image-key="Dlc_a_indicator.png" data-src="https://static.wikia.nocookie.net/bindingofisaacre_gamepedia/images/9/95/Dlc_a_indicator.png/revision/latest/scale-to-width-down/31?cb=20190418212519" /><br />LABY<br />RNTH
+</td>
+<td>Inescapable labyrinth
+</td>
+<td>Permanent Curse of the Labyrinth. <span title="Disables achievements" style="cursor:help"><img alt="Disables achievements" src="data:image/gif;base64,R0lGODlhAQABAIABAAAAAP///yH5BAEAAAEALAAAAAABAAEAQAICTAEAOw%3D%3D" decoding="async" title="Disables achievements" width="16" height="16" data-image-name="Achievements Disabled.png" data-image-key="Achievements_Disabled.png" data-src="https://static.wikia.nocookie.net/bindingofisaacre_gamepedia/images/1/16/Achievements_Disabled.png/revision/latest/scale-to-width-down/16?cb=20210821164322" class="lazyload" /></span>
+</td></tr>
+<tr>
+<td>58
+</td>
+<td><img alt="Added in Afterbirth" src="data:image/gif;base64,R0lGODlhAQABAIABAAAAAP///yH5BAEAAAEALAAAAAABAAEAQAICTAEAOw%3D%3D" decoding="async" title="Added in Afterbirth" width="31" height="14" class="dlc dlc-14 lazyload" data-image-name="Dlc a indicator.png" data-image-key="Dlc_a_indicator.png" data-src="https://static.wikia.nocookie.net/bindingofisaacre_gamepedia/images/9/95/Dlc_a_indicator.png/revision/latest/scale-to-width-down/31?cb=20190418212519" /><br />L0ST
+</td>
+<td>Hopelessly lost
+</td>
+<td>Permanent Curse of the Lost.
+</td></tr>
+<tr>
+<td>59
+</td>
+<td><img alt="Added in Afterbirth" src="data:image/gif;base64,R0lGODlhAQABAIABAAAAAP///yH5BAEAAAEALAAAAAABAAEAQAICTAEAOw%3D%3D" decoding="async" title="Added in Afterbirth" width="31" height="14" class="dlc dlc-14 lazyload" data-image-name="Dlc a indicator.png" data-image-key="Dlc_a_indicator.png" data-src="https://static.wikia.nocookie.net/bindingofisaacre_gamepedia/images/9/95/Dlc_a_indicator.png/revision/latest/scale-to-width-down/31?cb=20190418212519" /><br />VNKN<br />0WN
+</td>
+<td>Forever unknown
+</td>
+<td>Permanent Curse of the Unknown.
+</td></tr>
+<tr>
+<td>60
+</td>
+<td><img alt="Added in Afterbirth" src="data:image/gif;base64,R0lGODlhAQABAIABAAAAAP///yH5BAEAAAEALAAAAAABAAEAQAICTAEAOw%3D%3D" decoding="async" title="Added in Afterbirth" width="31" height="14" class="dlc dlc-14 lazyload" data-image-name="Dlc a indicator.png" data-image-key="Dlc_a_indicator.png" data-src="https://static.wikia.nocookie.net/bindingofisaacre_gamepedia/images/9/95/Dlc_a_indicator.png/revision/latest/scale-to-width-down/31?cb=20190418212519" /><br />MAZE
+</td>
+<td>Unending maze
+</td>
+<td>Permanent Curse of the Maze.
+</td></tr>
+<tr>
+<td>61
+</td>
+<td><img alt="Added in Afterbirth" src="data:image/gif;base64,R0lGODlhAQABAIABAAAAAP///yH5BAEAAAEALAAAAAABAAEAQAICTAEAOw%3D%3D" decoding="async" title="Added in Afterbirth" width="31" height="14" class="dlc dlc-14 lazyload" data-image-name="Dlc a indicator.png" data-image-key="Dlc_a_indicator.png" data-src="https://static.wikia.nocookie.net/bindingofisaacre_gamepedia/images/9/95/Dlc_a_indicator.png/revision/latest/scale-to-width-down/31?cb=20190418212519" /><br />BL1N<br />D
+</td>
+<td>Incurable blindness
+</td>
+<td>Permanent Curse of the Blind.
+</td></tr>
+<tr>
+<td>62
+</td>
+<td><img alt="Added in Afterbirth" src="data:image/gif;base64,R0lGODlhAQABAIABAAAAAP///yH5BAEAAAEALAAAAAABAAEAQAICTAEAOw%3D%3D" decoding="async" title="Added in Afterbirth" width="31" height="14" class="dlc dlc-14 lazyload" data-image-name="Dlc a indicator.png" data-image-key="Dlc_a_indicator.png" data-src="https://static.wikia.nocookie.net/bindingofisaacre_gamepedia/images/9/95/Dlc_a_indicator.png/revision/latest/scale-to-width-down/31?cb=20190418212519" /><br />CVRS<br />ED
+</td>
+<td>Horrible curse
+</td>
+<td>Permanent Curse of the Cursed.
+</td></tr>
+<tr>
+<td colspan="5" style="background:#142e59"><b>Curse Immunity</b>
+</td></tr>
+<tr>
+<td>63
+</td>
+<td><img alt="Added in Afterbirth" src="data:image/gif;base64,R0lGODlhAQABAIABAAAAAP///yH5BAEAAAEALAAAAAABAAEAQAICTAEAOw%3D%3D" decoding="async" title="Added in Afterbirth" width="31" height="14" class="dlc dlc-14 lazyload" data-image-name="Dlc a indicator.png" data-image-key="Dlc_a_indicator.png" data-src="https://static.wikia.nocookie.net/bindingofisaacre_gamepedia/images/9/95/Dlc_a_indicator.png/revision/latest/scale-to-width-down/31?cb=20190418212519" /><br />N1TE<br />L1TE
+</td>
+<td>Illuminate darkness
+</td>
+<td>Provides immunity to Curse of Darkness. <span title="Disables achievements" style="cursor:help"><img alt="Disables achievements" src="data:image/gif;base64,R0lGODlhAQABAIABAAAAAP///yH5BAEAAAEALAAAAAABAAEAQAICTAEAOw%3D%3D" decoding="async" title="Disables achievements" width="16" height="16" data-image-name="Achievements Disabled.png" data-image-key="Achievements_Disabled.png" data-src="https://static.wikia.nocookie.net/bindingofisaacre_gamepedia/images/1/16/Achievements_Disabled.png/revision/latest/scale-to-width-down/16?cb=20210821164322" class="lazyload" /></span>
+</td></tr>
+<tr>
+<td>64
+</td>
+<td><img alt="Added in Afterbirth" src="data:image/gif;base64,R0lGODlhAQABAIABAAAAAP///yH5BAEAAAEALAAAAAABAAEAQAICTAEAOw%3D%3D" decoding="async" title="Added in Afterbirth" width="31" height="14" class="dlc dlc-14 lazyload" data-image-name="Dlc a indicator.png" data-image-key="Dlc_a_indicator.png" data-src="https://static.wikia.nocookie.net/bindingofisaacre_gamepedia/images/9/95/Dlc_a_indicator.png/revision/latest/scale-to-width-down/31?cb=20190418212519" /><br />THRE<br />AD
+</td>
+<td>Escape the labyrinth
+</td>
+<td>Provides immunity to Curse of the Labyrinth. <span title="Disables achievements" style="cursor:help"><img alt="Disables achievements" src="data:image/gif;base64,R0lGODlhAQABAIABAAAAAP///yH5BAEAAAEALAAAAAABAAEAQAICTAEAOw%3D%3D" decoding="async" title="Disables achievements" width="16" height="16" data-image-name="Achievements Disabled.png" data-image-key="Achievements_Disabled.png" data-src="https://static.wikia.nocookie.net/bindingofisaacre_gamepedia/images/1/16/Achievements_Disabled.png/revision/latest/scale-to-width-down/16?cb=20210821164322" class="lazyload" /></span>
+</td></tr>
+<tr>
+<td>65
+</td>
+<td><img alt="Added in Afterbirth" src="data:image/gif;base64,R0lGODlhAQABAIABAAAAAP///yH5BAEAAAEALAAAAAABAAEAQAICTAEAOw%3D%3D" decoding="async" title="Added in Afterbirth" width="31" height="14" class="dlc dlc-14 lazyload" data-image-name="Dlc a indicator.png" data-image-key="Dlc_a_indicator.png" data-src="https://static.wikia.nocookie.net/bindingofisaacre_gamepedia/images/9/95/Dlc_a_indicator.png/revision/latest/scale-to-width-down/31?cb=20190418212519" /><br />F0VN<br />D
+</td>
+<td>I once was lost
+</td>
+<td>Provides immunity to Curse of the Lost. <span title="Disables achievements" style="cursor:help"><img alt="Disables achievements" src="data:image/gif;base64,R0lGODlhAQABAIABAAAAAP///yH5BAEAAAEALAAAAAABAAEAQAICTAEAOw%3D%3D" decoding="async" title="Disables achievements" width="16" height="16" data-image-name="Achievements Disabled.png" data-image-key="Achievements_Disabled.png" data-src="https://static.wikia.nocookie.net/bindingofisaacre_gamepedia/images/1/16/Achievements_Disabled.png/revision/latest/scale-to-width-down/16?cb=20210821164322" class="lazyload" /></span>
+</td></tr>
+<tr>
+<td>66
+</td>
+<td><img alt="Added in Afterbirth" src="data:image/gif;base64,R0lGODlhAQABAIABAAAAAP///yH5BAEAAAEALAAAAAABAAEAQAICTAEAOw%3D%3D" decoding="async" title="Added in Afterbirth" width="31" height="14" class="dlc dlc-14 lazyload" data-image-name="Dlc a indicator.png" data-image-key="Dlc_a_indicator.png" data-src="https://static.wikia.nocookie.net/bindingofisaacre_gamepedia/images/9/95/Dlc_a_indicator.png/revision/latest/scale-to-width-down/31?cb=20190418212519" /><br />N0W1<br />KN0W
+</td>
+<td>Know the unknown
+</td>
+<td>Provides immunity to Curse of the Unknown. <span title="Disables achievements" style="cursor:help"><img alt="Disables achievements" src="data:image/gif;base64,R0lGODlhAQABAIABAAAAAP///yH5BAEAAAEALAAAAAABAAEAQAICTAEAOw%3D%3D" decoding="async" title="Disables achievements" width="16" height="16" data-image-name="Achievements Disabled.png" data-image-key="Achievements_Disabled.png" data-src="https://static.wikia.nocookie.net/bindingofisaacre_gamepedia/images/1/16/Achievements_Disabled.png/revision/latest/scale-to-width-down/16?cb=20210821164322" class="lazyload" /></span>
+</td></tr>
+<tr>
+<td>67
+</td>
+<td><img alt="Added in Afterbirth" src="data:image/gif;base64,R0lGODlhAQABAIABAAAAAP///yH5BAEAAAEALAAAAAABAAEAQAICTAEAOw%3D%3D" decoding="async" title="Added in Afterbirth" width="31" height="14" class="dlc dlc-14 lazyload" data-image-name="Dlc a indicator.png" data-image-key="Dlc_a_indicator.png" data-src="https://static.wikia.nocookie.net/bindingofisaacre_gamepedia/images/9/95/Dlc_a_indicator.png/revision/latest/scale-to-width-down/31?cb=20190418212519" /><br />PATH<br />F1ND
+</td>
+<td>Stay out of the maze
+</td>
+<td>Provides immunity to Curse of the Maze. <span title="Disables achievements" style="cursor:help"><img alt="Disables achievements" src="data:image/gif;base64,R0lGODlhAQABAIABAAAAAP///yH5BAEAAAEALAAAAAABAAEAQAICTAEAOw%3D%3D" decoding="async" title="Disables achievements" width="16" height="16" data-image-name="Achievements Disabled.png" data-image-key="Achievements_Disabled.png" data-src="https://static.wikia.nocookie.net/bindingofisaacre_gamepedia/images/1/16/Achievements_Disabled.png/revision/latest/scale-to-width-down/16?cb=20210821164322" class="lazyload" /></span>
+</td></tr>
+<tr>
+<td>68
+</td>
+<td><img alt="Added in Afterbirth" src="data:image/gif;base64,R0lGODlhAQABAIABAAAAAP///yH5BAEAAAEALAAAAAABAAEAQAICTAEAOw%3D%3D" decoding="async" title="Added in Afterbirth" width="31" height="14" class="dlc dlc-14 lazyload" data-image-name="Dlc a indicator.png" data-image-key="Dlc_a_indicator.png" data-src="https://static.wikia.nocookie.net/bindingofisaacre_gamepedia/images/9/95/Dlc_a_indicator.png/revision/latest/scale-to-width-down/31?cb=20190418212519" /><br />BRA1<br />LLE
+</td>
+<td>Heal the blind
+</td>
+<td>Provides immunity to Curse of the Blind. <span title="Disables achievements" style="cursor:help"><img alt="Disables achievements" src="data:image/gif;base64,R0lGODlhAQABAIABAAAAAP///yH5BAEAAAEALAAAAAABAAEAQAICTAEAOw%3D%3D" decoding="async" title="Disables achievements" width="16" height="16" data-image-name="Achievements Disabled.png" data-image-key="Achievements_Disabled.png" data-src="https://static.wikia.nocookie.net/bindingofisaacre_gamepedia/images/1/16/Achievements_Disabled.png/revision/latest/scale-to-width-down/16?cb=20210821164322" class="lazyload" /></span>
+</td></tr>
+<tr>
+<td>70
+</td>
+<td><img alt="Added in Afterbirth" src="data:image/gif;base64,R0lGODlhAQABAIABAAAAAP///yH5BAEAAAEALAAAAAABAAEAQAICTAEAOw%3D%3D" decoding="async" title="Added in Afterbirth" width="31" height="14" class="dlc dlc-14 lazyload" data-image-name="Dlc a indicator.png" data-image-key="Dlc_a_indicator.png" data-src="https://static.wikia.nocookie.net/bindingofisaacre_gamepedia/images/9/95/Dlc_a_indicator.png/revision/latest/scale-to-width-down/31?cb=20190418212519" /><br />BLCK<br />CNDL
+</td>
+<td>Total curse immunity
+</td>
+<td>Provides immunity to all curses. <span title="Disables achievements" style="cursor:help"><img alt="Disables achievements" src="data:image/gif;base64,R0lGODlhAQABAIABAAAAAP///yH5BAEAAAEALAAAAAABAAEAQAICTAEAOw%3D%3D" decoding="async" title="Disables achievements" width="16" height="16" data-image-name="Achievements Disabled.png" data-image-key="Achievements_Disabled.png" data-src="https://static.wikia.nocookie.net/bindingofisaacre_gamepedia/images/1/16/Achievements_Disabled.png/revision/latest/scale-to-width-down/16?cb=20210821164322" class="lazyload" /></span>
+</td></tr>
+<tr>
+<td colspan="5" style="background:#142e59"><b>Damage Modifiers</b>
+</td></tr>
+<tr>
+<td>47
+</td>
+<td>HARD<br />HARD
+</td>
+<td>Full heart damage
+</td>
+<td>Isaac takes a full heart of damage from all sources.
+</td></tr>
+<tr>
+<td>48
+</td>
+<td>BRTL<br />B0NS
+</td>
+<td>Twelve heart damage
+</td>
+<td>Isaac takes twelve hearts of damage from all sources.
+</td></tr>
+<tr>
+<td>26
+</td>
+<td>D0NT<br />ST0P
+</td>
+<td>Don't stop moving
+</td>
+<td>Isaac takes damage if he stops moving.
+</td></tr>
+<tr>
+<td>27
+</td>
+<td>THEG<br />H0ST
+</td>
+<td>Damage on a timer
+</td>
+<td>Every 45 seconds, a ticking will begin, and after 5 seconds, Isaac will take 1/2 heart of damage. Damage increases to 1 heart in Chapter 4 and beyond. Having invincibility during the time when damage should be inflicted blocks the damage.
+</td></tr>
+<tr>
+<td>28
+</td>
+<td>30M1<br />N1TS
+</td>
+<td>30 minute limit
+</td>
+<td>Gives a time limit of 30 minutes to beat the game. When the timer hits 29:45, a timer starts ticking, and after 30:00, Isaac takes damage every second.
+</td></tr>
+<tr>
+<td colspan="5" style="background:#142e59"><b>Control Modifiers</b>
+</td></tr>
+<tr>
+<td>52
+</td>
+<td><img alt="Added in Afterbirth" src="data:image/gif;base64,R0lGODlhAQABAIABAAAAAP///yH5BAEAAAEALAAAAAABAAEAQAICTAEAOw%3D%3D" decoding="async" title="Added in Afterbirth" width="31" height="14" class="dlc dlc-14 lazyload" data-image-name="Dlc a indicator.png" data-image-key="Dlc_a_indicator.png" data-src="https://static.wikia.nocookie.net/bindingofisaacre_gamepedia/images/9/95/Dlc_a_indicator.png/revision/latest/scale-to-width-down/31?cb=20190418212519" /><br />1CES<br />KATE
+</td>
+<td>Ice physics
+</td>
+<td>Makes the ground slippery.
+</td></tr>
+<tr>
+<td>74
+</td>
+<td><img alt="Added in Afterbirth" src="data:image/gif;base64,R0lGODlhAQABAIABAAAAAP///yH5BAEAAAEALAAAAAABAAEAQAICTAEAOw%3D%3D" decoding="async" title="Added in Afterbirth" width="31" height="14" class="dlc dlc-14 lazyload" data-image-name="Dlc a indicator.png" data-image-key="Dlc_a_indicator.png" data-src="https://static.wikia.nocookie.net/bindingofisaacre_gamepedia/images/9/95/Dlc_a_indicator.png/revision/latest/scale-to-width-down/31?cb=20190418212519" /><br />BRAV<br />ERY
+</td>
+<td>Bravery
+</td>
+<td>Isaac automatically fires tears in the same direction that he moves. Removes the ability to fire tears manually.
+</td></tr>
+<tr>
+<td>75
+</td>
+<td><img alt="Added in Afterbirth" src="data:image/gif;base64,R0lGODlhAQABAIABAAAAAP///yH5BAEAAAEALAAAAAABAAEAQAICTAEAOw%3D%3D" decoding="async" title="Added in Afterbirth" width="31" height="14" class="dlc dlc-14 lazyload" data-image-name="Dlc a indicator.png" data-image-key="Dlc_a_indicator.png" data-src="https://static.wikia.nocookie.net/bindingofisaacre_gamepedia/images/9/95/Dlc_a_indicator.png/revision/latest/scale-to-width-down/31?cb=20190418212519" /><br />C0WR<br />D1CE
+</td>
+<td>Cowardice
+</td>
+<td>Isaac automatically fires tears in the opposite direction that he moves. Removes the ability to fire tears manually.
+</td></tr>
+<tr>
+<td>12
+</td>
+<td>DRAW<br />KCAB
+</td>
+<td>Reversed controls
+</td>
+<td>All movement and firing keys are reversed.
+</td></tr>
+<tr>
+<td>76
+</td>
+<td><img alt="Added in Afterbirth" src="data:image/gif;base64,R0lGODlhAQABAIABAAAAAP///yH5BAEAAAEALAAAAAABAAEAQAICTAEAOw%3D%3D" decoding="async" title="Added in Afterbirth" width="31" height="14" class="dlc dlc-14 lazyload" data-image-name="Dlc a indicator.png" data-image-key="Dlc_a_indicator.png" data-src="https://static.wikia.nocookie.net/bindingofisaacre_gamepedia/images/9/95/Dlc_a_indicator.png/revision/latest/scale-to-width-down/31?cb=20190418212519" /><br />AX1S<br />ALGN
+</td>
+<td>Axis aligned controls
+</td>
+<td>Isaac cannot move diagonally.
+</td></tr>
+<tr>
+<td colspan="5" style="background:#142e59"><b>Camouflage</b>
+</td></tr>
+<tr>
+<td>3
+</td>
+<td>CAM0<br />K1DD
+</td>
+<td>Camouflage player
+</td>
+<td>Isaac blends into the ground.
+</td></tr>
+<tr>
+<td>4
+</td>
+<td>CAM0<br />F0ES
+</td>
+<td>Camouflage enemies
+</td>
+<td>All enemies blend into the ground.
+</td></tr>
+<tr>
+<td>5
+</td>
+<td>CAM0<br />DR0P
+</td>
+<td>Camouflage stuff
+</td>
+<td>Pickups and items blend into the ground.
+</td></tr>
+<tr>
+<td>6
+</td>
+<td>WH0A<br />WHAT
+</td>
+<td>Camouflage EVERYTHING!
+</td>
+<td>Isaac, enemies, pickups, and items all blend into the ground.
+</td></tr>
+<tr>
+<td>14
+</td>
+<td>1MN0<br />B0DY
+</td>
+<td>Invisible player
+</td>
+<td>Isaac becomes completely invisible.
+</td></tr>
+<tr>
+<td>15
+</td>
+<td>BL1N<br />DEYE
+</td>
+<td>Invisible enemies
+</td>
+<td>All enemies become completely invisible.
+</td></tr>
+<tr>
+<td colspan="5" style="background:#142e59"><b>Player Appearance</b>
+</td></tr>
+<tr>
+<td>46
+</td>
+<td>THEB<br />LANK
+</td>
+<td>The blank
+</td>
+<td>Isaac has no face.
+</td></tr>
+<tr>
+<td>53
+</td>
+<td>KAPP<br />A
+</td>
+<td>Grayscale
+</td>
+<td>Isaac turns gray.
+</td></tr>
+<tr>
+<td>54
+</td>
+<td>H0H0<br />H0H0
+</td>
+<td>Christmas
+</td>
+<td>Isaac wears a Christmas hat.
+</td></tr>
+<tr>
+<td>35
+</td>
+<td>T0PH<br />EAVY
+</td>
+<td>Big head mode
+</td>
+<td>Isaac's head is large.
+</td></tr>
+<tr>
+<td>36
+</td>
+<td>T1NY<br />D0ME
+</td>
+<td>Tiny head mode
+</td>
+<td>Isaac's head is small.
+</td></tr>
+<tr>
+<td>37
+</td>
+<td>PTCH<br />BLCK
+</td>
+<td>Black body
+</td>
+<td>Isaac and his tears turn completely black.
+</td></tr>
+<tr>
+<td colspan="5" style="background:#142e59"><b>Visual Effects</b>
+</td></tr>
+<tr>
+<td>38
+</td>
+<td>TEAR<br />GL0W
+</td>
+<td>Glowing tears
+</td>
+<td>Isaac's tears glow. <span title="Disables achievements" style="cursor:help"><img alt="Disables achievements" src="data:image/gif;base64,R0lGODlhAQABAIABAAAAAP///yH5BAEAAAEALAAAAAABAAEAQAICTAEAOw%3D%3D" decoding="async" title="Disables achievements" width="16" height="16" data-image-name="Achievements Disabled.png" data-image-key="Achievements_Disabled.png" data-src="https://static.wikia.nocookie.net/bindingofisaacre_gamepedia/images/1/16/Achievements_Disabled.png/revision/latest/scale-to-width-down/16?cb=20210821164322" class="lazyload" /></span>
+</td></tr>
+<tr>
+<td>23
+</td>
+<td>BL00<br />00DY
+</td>
+<td>Extra gore
+</td>
+<td>Makes a lot more blood appear after enemies die.
+</td></tr>
+<tr>
+<td colspan="5" style="background:#142e59"><b>HUD Modifiers</b>
+</td></tr>
+<tr>
+<td>8
+</td>
+<td>B00B<br />T00B
+</td>
+<td>Cathode rays!
+</td>
+<td>Applies a filter that makes the game look like it's being played through a cathode ray tube.
+</td></tr>
+<tr>
+<td>9
+</td>
+<td>DYSL<br />EX1A
+</td>
+<td>Dyslexia
+</td>
+<td>All in-game text is rearranged.
+</td></tr>
+<tr>
+<td>10
+</td>
+<td>KEEP<br />TRAK
+</td>
+<td>No HUD
+</td>
+<td>Removes the HUD entirely. This affects the map, health, consumables, held items, pickup text, floor names, and more.
+</td></tr>
+<tr>
+<td>29
+</td>
+<td>MED1<br />C1NE
+</td>
+<td>Mystery pills
+</td>
+<td>All pill names and descriptions show&#160;???.
+</td></tr>
+<tr>
+<td>30
+</td>
+<td>FACE<br />D0WN
+</td>
+<td>Mystery cards
+</td>
+<td>All card names and descriptions show&#160;???.
+</td></tr>
+<tr>
+<td colspan="5" style="background:#142e59"><b>Enemy Modifiers</b>
+</td></tr>
+<tr>
+<td>13
+</td>
+<td>CHAM<br />P10N
+</td>
+<td>Champion enemies
+</td>
+<td>All enemies turn into <a href="/wiki/Monsters#Champions" title="Monsters">champions</a> if possible. <span title="Disables achievements" style="cursor:help"><img alt="Disables achievements" src="data:image/gif;base64,R0lGODlhAQABAIABAAAAAP///yH5BAEAAAEALAAAAAABAAEAQAICTAEAOw%3D%3D" decoding="async" title="Disables achievements" width="16" height="16" data-image-name="Achievements Disabled.png" data-image-key="Achievements_Disabled.png" data-src="https://static.wikia.nocookie.net/bindingofisaacre_gamepedia/images/1/16/Achievements_Disabled.png/revision/latest/scale-to-width-down/16?cb=20210821164322" class="lazyload" /></span>
+</td></tr>
+<tr>
+<td>17
+</td>
+<td>C0CK<br />FGHT
+</td>
+<td>Charmed enemies
+</td>
+<td>All enemies are permanently <a href="/wiki/Effects#Status_Effects" title="Effects">charmed</a>. <span title="Disables achievements" style="cursor:help"><img alt="Disables achievements" src="data:image/gif;base64,R0lGODlhAQABAIABAAAAAP///yH5BAEAAAEALAAAAAABAAEAQAICTAEAOw%3D%3D" decoding="async" title="Disables achievements" width="16" height="16" data-image-name="Achievements Disabled.png" data-image-key="Achievements_Disabled.png" data-src="https://static.wikia.nocookie.net/bindingofisaacre_gamepedia/images/1/16/Achievements_Disabled.png/revision/latest/scale-to-width-down/16?cb=20210821164322" class="lazyload" /></span>
+</td></tr>
+<tr>
+<td>18
+</td>
+<td>C0NF<br />ETT1
+</td>
+<td>Confused enemies
+</td>
+<td>All enemies are permanently <a href="/wiki/Effects#Status_Effects" title="Effects">confused</a>. <span title="Disables achievements" style="cursor:help"><img alt="Disables achievements" src="data:image/gif;base64,R0lGODlhAQABAIABAAAAAP///yH5BAEAAAEALAAAAAABAAEAQAICTAEAOw%3D%3D" decoding="async" title="Disables achievements" width="16" height="16" data-image-name="Achievements Disabled.png" data-image-key="Achievements_Disabled.png" data-src="https://static.wikia.nocookie.net/bindingofisaacre_gamepedia/images/1/16/Achievements_Disabled.png/revision/latest/scale-to-width-down/16?cb=20210821164322" class="lazyload" /></span>
+</td></tr>
+<tr>
+<td>19
+</td>
+<td>FEAR<br />M1NT
+</td>
+<td>Scaredy enemies
+</td>
+<td>All enemies are permanently <a href="/wiki/Effects#Status_Effects" title="Effects">scared</a>. <span title="Disables achievements" style="cursor:help"><img alt="Disables achievements" src="data:image/gif;base64,R0lGODlhAQABAIABAAAAAP///yH5BAEAAAEALAAAAAABAAEAQAICTAEAOw%3D%3D" decoding="async" title="Disables achievements" width="16" height="16" data-image-name="Achievements Disabled.png" data-image-key="Achievements_Disabled.png" data-src="https://static.wikia.nocookie.net/bindingofisaacre_gamepedia/images/1/16/Achievements_Disabled.png/revision/latest/scale-to-width-down/16?cb=20210821164322" class="lazyload" /></span>
+</td></tr>
+<tr>
+<td>20
+</td>
+<td>FRA1<br />DN0T
+</td>
+<td>Skittish enemies
+</td>
+<td>Every few seconds, all enemies become <a href="/wiki/Effects#Status_Effects" title="Effects">scared</a>. <span title="Disables achievements" style="cursor:help"><img alt="Disables achievements" src="data:image/gif;base64,R0lGODlhAQABAIABAAAAAP///yH5BAEAAAEALAAAAAABAAEAQAICTAEAOw%3D%3D" decoding="async" title="Disables achievements" width="16" height="16" data-image-name="Achievements Disabled.png" data-image-key="Achievements_Disabled.png" data-src="https://static.wikia.nocookie.net/bindingofisaacre_gamepedia/images/1/16/Achievements_Disabled.png/revision/latest/scale-to-width-down/16?cb=20210821164322" class="lazyload" /></span>
+</td></tr>
+<tr>
+<td>21
+</td>
+<td>CLST<br />RPH0
+</td>
+<td>Asocial enemies
+</td>
+<td>All enemies are permanently <a href="/wiki/Effects#Status_Effects" title="Effects">charmed and scared</a>. <span title="Disables achievements" style="cursor:help"><img alt="Disables achievements" src="data:image/gif;base64,R0lGODlhAQABAIABAAAAAP///yH5BAEAAAEALAAAAAABAAEAQAICTAEAOw%3D%3D" decoding="async" title="Disables achievements" width="16" height="16" data-image-name="Achievements Disabled.png" data-image-key="Achievements_Disabled.png" data-src="https://static.wikia.nocookie.net/bindingofisaacre_gamepedia/images/1/16/Achievements_Disabled.png/revision/latest/scale-to-width-down/16?cb=20210821164322" class="lazyload" /></span>
+</td></tr>
+<tr>
+<td colspan="5" style="background:#142e59"><b>Sound Modifiers</b>
+</td></tr>
+<tr>
+<td>7
+</td>
+<td>FART<br />SNDS
+</td>
+<td>Farty sounds
+</td>
+<td>All sound effects are replaced with farts.
+</td></tr>
+<tr>
+<td>1
+</td>
+<td>SL0W<br />4ME2
+</td>
+<td>Movement tempo
+</td>
+<td>Music speed is affected by Isaac's walking speed.
+</td></tr>
+<tr>
+<td>2
+</td>
+<td>HART<br />BEAT
+</td>
+<td>Health tempo
+</td>
+<td>The lower Isaac's health is, the slower the music is.
+</td></tr>
+<tr>
+<td>41
+</td>
+<td>ANDA<br />NTE
+</td>
+<td>Downtempo
+</td>
+<td>Music is slowed down.
+</td></tr>
+<tr>
+<td>42
+</td>
+<td>LARG<br />HET0
+</td>
+<td>Downtempo--
+</td>
+<td>Music is significantly slowed down.
+</td></tr>
+<tr>
+<td>43
+</td>
+<td>ALLE<br />GR0
+</td>
+<td>Uptempo
+</td>
+<td>Music is sped up.
+</td></tr>
+<tr>
+<td>44
+</td>
+<td>PRES<br />T0
+</td>
+<td>Uptempo++
+</td>
+<td>Music is significantly sped up.
+</td></tr>
+<tr>
+<td colspan="5" style="background:#142e59"><b>Video Games?</b>
+</td></tr>
+<tr>
+<td>77
+</td>
+<td><img alt="Added in Repentance" src="data:image/gif;base64,R0lGODlhAQABAIABAAAAAP///yH5BAEAAAEALAAAAAABAAEAQAICTAEAOw%3D%3D" decoding="async" title="Added in Repentance" width="31" height="14" class="dlc dlc-8 lazyload" data-image-name="Dlc r indicator.png" data-image-key="Dlc_r_indicator.png" data-src="https://static.wikia.nocookie.net/bindingofisaacre_gamepedia/images/f/f2/Dlc_r_indicator.png/revision/latest/scale-to-width-down/31?cb=20210815090252" /><br />SVPE<br />RH0T
+</td>
+<td>SuperHot
+</td>
+<td>While Isaac is not moving, time runs extremely slowly. Isaac's speed and fire rate remain normal at all times. <span title="Disables achievements" style="cursor:help"><img alt="Disables achievements" src="data:image/gif;base64,R0lGODlhAQABAIABAAAAAP///yH5BAEAAAEALAAAAAABAAEAQAICTAEAOw%3D%3D" decoding="async" title="Disables achievements" width="16" height="16" data-image-name="Achievements Disabled.png" data-image-key="Achievements_Disabled.png" data-src="https://static.wikia.nocookie.net/bindingofisaacre_gamepedia/images/1/16/Achievements_Disabled.png/revision/latest/scale-to-width-down/16?cb=20210821164322" class="lazyload" /></span>
+</td></tr>
+<tr>
+<td>78
+</td>
+<td><img alt="Added in Repentance" src="data:image/gif;base64,R0lGODlhAQABAIABAAAAAP///yH5BAEAAAEALAAAAAABAAEAQAICTAEAOw%3D%3D" decoding="async" title="Added in Repentance" width="31" height="14" class="dlc dlc-8 lazyload" data-image-name="Dlc r indicator.png" data-image-key="Dlc_r_indicator.png" data-src="https://static.wikia.nocookie.net/bindingofisaacre_gamepedia/images/f/f2/Dlc_r_indicator.png/revision/latest/scale-to-width-down/31?cb=20210815090252" /><br />M0DE<br />SEVN
+</td>
+<td>Retro vision
+</td>
+<td>Screen has a permanent <a href="/wiki/Pills" title="Pills">Retro-Vision</a> effect.
+</td></tr>

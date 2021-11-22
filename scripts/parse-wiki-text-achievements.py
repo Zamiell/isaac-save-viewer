@@ -9,7 +9,7 @@ import os
 import re
 import urllib.request
 
-INPUT_FILE = "achievement-data.txt"  # From the wiki
+INPUT_FILE = "wiki-achievement-html.txt"
 OUTPUT_FILE = "achievements.json"
 IMAGE_DIRECTORY_NAME = "images"
 

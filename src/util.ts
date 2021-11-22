@@ -7,7 +7,7 @@ export const ensureAllCases = (obj: never): never => obj;
 export function getElement(id: string) {
   const element = document.getElementById(id);
   if (element === null) {
-    throw new Error(`Failed to find the element with ID: ${element}`);
+    throw new Error(`Failed to find the element with ID: ${id}`);
   }
 
   return element;
