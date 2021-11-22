@@ -14,28 +14,15 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap" rel="stylesheet">
 
+    <!-- KaitaiStream -->
+    <script src="lib/KaitaiStream.js"></script>
+    <script src="lib/IsaacSaveFile.js"></script>
+
     <link rel="stylesheet" type="text/css" href="main.css">
     <script src="main.js"></script>
   </head>
 
   <body>
-    <!--
-    <div class="ui text container">
-      <div class="ui">
-        <h1 class="ui header">
-          <div class="content">
-
-          </div>
-          <div class="sub header">
-
-          </div>
-        </h1>
-      </div>
-
-      <button class="ui button"></button>
-    </div>
-    -->
-
     <section class="section">
       <div class="container">
         <div class="columns is-centered has-text-centered">
@@ -76,7 +63,7 @@
               <div class="level-left">
                 <div class="level-item">
                   <h2 class="title is-4">
-                    Achievements (<span id="num-achievements-unlocked"></span> / <span id="total-achievements"></span>)
+                    Achievements (<span id="achievements-gotten"></span> / <span id="achievements-total"></span>)
                   </h2>
                 </div>
                 <div class="level-item">
@@ -100,7 +87,7 @@
                 </tbody>
               </table>
 
-              <p id="achievements-all-unlocked">n/a</p>
+              <p id="achievements-completed">n/a</p>
             </section>
 
             <br /><br />
@@ -109,7 +96,7 @@
               <div class="level-left">
                 <div class="level-item">
                   <h2 class="title is-4">
-                    Collectibles Touched (<span id="num-collectibles-touched"></span> / <span id="total-collectibles"></span>)
+                    Collectibles Touched (<span id="collectibles-gotten"></span> / <span id="collectibles-total"></span>)
                   </h2>
                 </div>
                 <div class="level-item">
@@ -132,8 +119,41 @@
                 </tbody>
               </table>
 
-              <p id="collectibles-all-touched">n/a</p>
+              <p id="collectibles-completed">n/a</p>
             </section>
+
+            <br /><br />
+
+            <div class="level">
+              <div class="level-left">
+                <div class="level-item">
+                  <h2 class="title is-4">
+                    Easter Eggs (<span id="easter-eggs-gotten"></span> / <span id="easter-eggs-total"></span>)
+                  </h2>
+                </div>
+                <div class="level-item">
+                  <p>[<a id="easter-eggs-toggle" href="#">Hide</a>]</p>
+                </div>
+              </div>
+            </div>
+
+            <section id="easter-eggs-section">
+              <table id="easter-eggs-table" class="table">
+                <thead>
+                  <tr>
+                    <th>ID</th>
+                    <th>Seed</th>
+                    <th>In-Game Description</th>
+                    <th>Effects</th>
+                  </tr>
+                </thead>
+                <tbody id="easter-eggs-table-tbody">
+                </tbody>
+              </table>
+
+              <p id="easter-eggs-completed">n/a</p>
+            </section>
+
           </div>
         </div>
 
@@ -142,6 +162,7 @@
         <div class="columns is-centered has-text-centered">
           <div class="column is-half is-size-7">
             <p>Written by <a href="https://www.twitch.tv/zamiell">Zamiel</a></p>
+            <p>Save file format reversed by the talented <a href="https://github.com/bladecoding">Blade</a></p>
             <p><a href="https://github.com/Zamiell/isaac-save-viewer/">Source code</a></p>
             <p><a href="https://isaacscript.github.io/">IsaacScript</a></p>
             <p><a href="https://www.speedrun.com/repentance/resources">Download a full save file</a></p>
