@@ -1,9 +1,6 @@
 const DISPLAY_VISIBLE = "block";
 const DISPLAY_HIDDEN = "none";
 
-/** Helper function to get type safety on a switch statement. */
-export const ensureAllCases = (obj: never): never => obj;
-
 export function getElement(id: string) {
   const element = document.getElementById(id);
   if (element === null) {
