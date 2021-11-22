@@ -1,12 +1,17 @@
 import * as achievements from "./data/achievements.json";
 import * as easterEggs from "./data/easterEggs.json";
+import * as itemPools from "./data/itempools.json";
 import * as items from "./data/items.json";
+import { ITEM_POOL_NAME_MAP } from "./itemPoolNameMap";
 import { hideSelectSaveFileArea } from "./selectSaveFileSubroutines";
-import { getElement, hide, parseIntSafe, show } from "./util";
+import { getElement, hide, parseIntSafe, show, toggle } from "./util";
+
+type Prefix = "achievements" | "collectibles" | "easter-eggs";
 
 const SAVE_FILE_STATS_ID = "save-file-stats";
 const WIKI_PREFIX = "https://bindingofisaacrebirth.fandom.com/wiki/";
-type Prefix = "achievements" | "collectibles" | "easter-eggs";
+const HIDE_TEXT = "Hide";
+const SHOW_TEXT = "Show";
 
 export function fillPage(isaacSaveFile: IsaacSaveFile) {
   // Build out the tables on the page
@@ -111,8 +116,9 @@ function fillCollectiblesAddRow(i: number, tBody: HTMLTableElement) {
   const image = `<img src="img/collectibles/collectibles_${filename}.png" />`;
   rowData.push(image);
 
-  const pools = "Unknown"; // TODO
-  rowData.push(pools);
+  const pools = getPoolsForCollectible(i);
+  const poolsText = getPoolsText(pools);
+  rowData.push(poolsText);
 
   addRow(tBody, rowData);
 }
@@ -122,6 +128,38 @@ function getCollectibleDescription(id: number) {
   const itemDescription = items[key];
 
   return itemDescription;
+}
+
+function getPoolsForCollectible(i: number) {
+  const id = i.toString();
+
+  // The "itempools.json" file was generated automatically from the "itempools.xml" file using an
+  // online converter
+  const pools: string[] = [];
+  for (const pool of itemPools.ItemPools.Pool) {
+    // Convert e.g. "bossRoom" to "Boss Room"
+    // eslint-disable-next-line no-underscore-dangle
+    const poolNameEntry = ITEM_POOL_NAME_MAP.get(pool._Name);
+    const poolName = poolNameEntry === undefined ? "Unknown" : poolNameEntry;
+
+    for (const item of pool.Item) {
+      // eslint-disable-next-line no-underscore-dangle
+      if (item._Id === id) {
+        pools.push(poolName);
+        break;
+      }
+    }
+  }
+
+  return pools;
+}
+
+function getPoolsText(pools: string[]) {
+  if (pools.length === 0) {
+    return "n/a (not present in any pools)";
+  }
+
+  return pools.join(", ");
 }
 
 function fillEasterEggs(isaacSaveFile: IsaacSaveFile) {
@@ -183,11 +221,13 @@ function fillTable(
   numTotal: number,
   addRowFunc: (i: number, tBody: HTMLTableElement) => void,
 ) {
-  const table = getElement(`${prefix}-table`);
-  const tBody = getElement(`${prefix}-table-tbody`) as HTMLTableElement;
+  const tableElement = getElement(`${prefix}-table`);
+  const tBodyElement = getElement(`${prefix}-table-tbody`) as HTMLTableElement;
   const completedElement = getElement(`${prefix}-completed`);
   const numGottenElement = getElement(`${prefix}-gotten`);
   const numTotalElement = getElement(`${prefix}-total`);
+  const toggleElement = getElement(`${prefix}-toggle`);
+  const sectionElement = getElement(`${prefix}-section`);
 
   let numGotten = 0;
 
@@ -206,7 +246,7 @@ function fillTable(
 
       numGotten += 1;
     } else {
-      addRowFunc(i, tBody);
+      addRowFunc(i, tBodyElement);
     }
   }
 
@@ -214,10 +254,15 @@ function fillTable(
   numTotalElement.innerHTML = numTotal.toString();
 
   if (numGotten === numTotal) {
-    hide(table);
+    hide(tableElement);
   } else {
     hide(completedElement);
   }
+
+  toggleElement.addEventListener("click", () => {
+    toggle(sectionElement);
+    swapLinkText(toggleElement);
+  });
 }
 
 function addRow(tBody: HTMLTableElement, rowData: string[]) {
@@ -233,4 +278,9 @@ function isValidCollectibleID(id: number) {
 
 function isValidEasterEgg(id: number) {
   return getEasterEggDescription(id) !== undefined;
+}
+
+function swapLinkText(element: HTMLElement) {
+  const newLinkText = element.innerHTML === HIDE_TEXT ? SHOW_TEXT : HIDE_TEXT;
+  element.innerHTML = newLinkText;
 }
