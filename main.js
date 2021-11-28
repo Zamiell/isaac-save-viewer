@@ -47,12 +47,12 @@ function fillAchievementsAddRow(i, tBody) {
     var key = id;
     var description = achievements[key];
     if (description === undefined) {
-        throw new Error("Failed to find the achievement for ID: " + id);
+        throw new Error("Failed to find the achievement for ID: ".concat(id));
     }
     var name = description.name, link = description.link, inGameDescription = description.inGameDescription, unlockDescription = description.unlockDescription;
-    var linkedName = link === "" ? name : "<a href=" + WIKI_PREFIX + link + ">" + name + "</a>";
+    var linkedName = link === "" ? name : "<a href=".concat(WIKI_PREFIX).concat(link, ">").concat(name, "</a>");
     rowData.push(linkedName);
-    var image = "<img src=\"img/achievements/" + id + ".png\" />";
+    var image = "<img src=\"img/achievements/".concat(id, ".png\" />");
     rowData.push(image);
     rowData.push(inGameDescription);
     rowData.push(unlockDescription);
@@ -93,7 +93,7 @@ function fillCollectiblesAddRow(i, tBody) {
     rowData.push(id);
     rowData.push(name);
     var filename = id.padStart(3, "0");
-    var image = "<img src=\"img/collectibles/collectibles_" + filename + ".png\" />";
+    var image = "<img src=\"img/collectibles/collectibles_".concat(filename, ".png\" />");
     rowData.push(image);
     var pools = getPoolsForCollectible(i);
     var poolsText = getPoolsText(pools);
@@ -174,13 +174,13 @@ function getEasterEggDescription(id) {
     return easterEggDescription;
 }
 function fillTable(prefix, things, numTotal, addRowFunc) {
-    var tableElement = (0, util_1.getElement)(prefix + "-table");
-    var tBodyElement = (0, util_1.getElement)(prefix + "-table-tbody");
-    var completedElement = (0, util_1.getElement)(prefix + "-completed");
-    var numGottenElement = (0, util_1.getElement)(prefix + "-gotten");
-    var numTotalElement = (0, util_1.getElement)(prefix + "-total");
-    var toggleElement = (0, util_1.getElement)(prefix + "-toggle");
-    var sectionElement = (0, util_1.getElement)(prefix + "-section");
+    var tableElement = (0, util_1.getElement)("".concat(prefix, "-table"));
+    var tBodyElement = (0, util_1.getElement)("".concat(prefix, "-table-tbody"));
+    var completedElement = (0, util_1.getElement)("".concat(prefix, "-completed"));
+    var numGottenElement = (0, util_1.getElement)("".concat(prefix, "-gotten"));
+    var numTotalElement = (0, util_1.getElement)("".concat(prefix, "-total"));
+    var toggleElement = (0, util_1.getElement)("".concat(prefix, "-toggle"));
+    var sectionElement = (0, util_1.getElement)("".concat(prefix, "-section"));
     var numGotten = 0;
     // There is never a thing corresponding to the 0th element in the array, so we skip it
     for (var i = 1; i < things.length; i++) {
@@ -380,7 +380,7 @@ function verifyNotAfterbirthPlus(isaacSaveFile) {
     }
 }
 function errorWrongGameType(gameType) {
-    throw new Error("That is a save file for <i>The Binding of Isaac: " + gameType + "</i>.<br />This site only supports save files for <i>The Binding of Isaac: Repentance</i>.");
+    throw new Error("That is a save file for <i>The Binding of Isaac: ".concat(gameType, "</i>.<br />This site only supports save files for <i>The Binding of Isaac: Repentance</i>."));
 }
 
 
@@ -442,7 +442,7 @@ function selectSaveFileError(err) {
     var errorElement = (0, util_1.getElement)(CHOOSE_SAVE_FILE_ERROR_ID);
     (0, util_1.show)(errorElement);
     var errorTextElement = (0, util_1.getElement)(CHOOSE_SAVE_FILE_ERROR_TEXT_ID);
-    errorTextElement.innerHTML = "" + err;
+    errorTextElement.innerHTML = "".concat(err);
 }
 exports.selectSaveFileError = selectSaveFileError;
 function hideSelectSaveFileArea() {
@@ -468,7 +468,7 @@ var DISPLAY_HIDDEN = "none";
 function getElement(id) {
     var element = document.getElementById(id);
     if (element === null) {
-        throw new Error("Failed to find the element with ID: " + id);
+        throw new Error("Failed to find the element with ID: ".concat(id));
     }
     return element;
 }
@@ -498,7 +498,7 @@ function parseIntSafe(input) {
     }
     if (isNegativeNumber) {
         // Add the leading minus sign back
-        trimmedInput = "-" + trimmedInput;
+        trimmedInput = "-".concat(trimmedInput);
     }
     return parseInt(trimmedInput, 10);
 }
