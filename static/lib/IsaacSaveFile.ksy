@@ -1,3 +1,8 @@
+# Kaitai Struct
+# https://kaitai.io/
+
+# This is a struct definition file for save files for The Binding of Isaac: Repentance.
+
 meta:
   id: isaac_save_file
   endian: le
