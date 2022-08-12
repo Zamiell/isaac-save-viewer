@@ -3,7 +3,7 @@ import { selectSaveFileError } from "./selectSaveFileSubroutines";
 
 const HEADER_LENGTH = 16;
 
-// Run files are ones that contain data for a run that has been exited mid-way through
+// Run files are ones that contain data for a run that has been exited mid-way through.
 // e.g. gamestate1.dat
 const REBIRTH_RUN_HEADER = "ISAACNG_GSR0018";
 const AFTERBIRTH_RUN_HEADER = "ISAACNG_GSR0034";
@@ -16,21 +16,25 @@ const RUN_HEADERS = new Set([
   REPENTANCE_RUN_HEADER,
 ]);
 
-// Persistent files are ones that contain data for the entire save file
+// Persistent files are ones that contain data for the entire save file.
 // e.g. persistentgamedata1.dat
 const REBIRTH_PERSISTENT_HEADER = "ISAACNGSAVE06R";
 const AFTERBIRTH_PERSISTENT_HEADER = "ISAACNGSAVE08R";
 const AFTERBIRTH_PLUS_AND_REPENTANCE_PERSISTENT_HEADER = "ISAACNGSAVE09R";
 
 // Afterbirth+ actually has 403 achievements, but the size of the array is 404 because there is no
-// 0th achievement
+// 0th achievement.
 const NUM_AFTERBIRTH_PLUS_ACHIEVEMENTS = 404;
 
-export function readFile(files: FileList) {
-  const file = files[0];
+export function readFile(files: FileList): void {
+  const firstFile = files[0];
+  if (firstFile === undefined) {
+    throw new Error("Failed to get the first file from the file list.");
+  }
+
   const inputReader = new FileReader();
   inputReader.addEventListener("load", inputReaderLoad);
-  inputReader.readAsArrayBuffer(file);
+  inputReader.readAsArrayBuffer(firstFile);
 }
 
 function inputReaderLoad(this: FileReader) {
@@ -51,7 +55,7 @@ function parseSaveFile(fileReader: FileReader): IsaacSaveFile {
   verifyHeader(arrayBuffer);
 
   // The format of the save file was reversed by Blade using: https://ide.kaitai.io/
-  // It produces a JavaScript decoder that we leverage here
+  // It produces a JavaScript decoder that we leverage here.
   const kaitaiStream = new KaitaiStream(arrayBuffer);
   const isaacSaveFile = new IsaacSaveFile(kaitaiStream);
 
@@ -61,8 +65,8 @@ function parseSaveFile(fileReader: FileReader): IsaacSaveFile {
 }
 
 function verifyHeader(arrayBuffer: ArrayBuffer) {
-  // Before we invoke the real parser, we manually extract the header
-  // (for the purposes of showing a better error message)
+  // Before we invoke the real parser, we manually extract the header (for the purposes of showing a
+  // better error message).
   const headerBytes = arrayBuffer.slice(0, HEADER_LENGTH);
   const header = arrayBufferToString(headerBytes);
 
@@ -103,10 +107,15 @@ function removeNullCharacters(string: string) {
 }
 
 function verifyNotAfterbirthPlus(isaacSaveFile: IsaacSaveFile) {
-  // Since Afterbirth+ has the same save file header as Repentance,
-  // we must use some other save file property to tell the difference
-  const achievements = isaacSaveFile.chunks[ChunkType.ACHIEVEMENTS - 1];
-  if (achievements.len === NUM_AFTERBIRTH_PLUS_ACHIEVEMENTS) {
+  // Since Afterbirth+ has the same save file header as Repentance, we must use some other save file
+  // property to tell the difference.
+  // eslint-disable-next-line isaacscript/strict-enums
+  const chunk = isaacSaveFile.chunks[ChunkType.ACHIEVEMENTS - 1];
+  if (chunk === undefined) {
+    throw new Error("Failed to get the achievements chunk.");
+  }
+
+  if (chunk.len === NUM_AFTERBIRTH_PLUS_ACHIEVEMENTS) {
     errorWrongGameType("Afterbirth+");
   }
 }

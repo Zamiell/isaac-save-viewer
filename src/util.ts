@@ -1,7 +1,7 @@
 const DISPLAY_VISIBLE = "block";
 const DISPLAY_HIDDEN = "none";
 
-export function getElement(id: string) {
+export function getElement(id: string): HTMLElement {
   const element = document.getElementById(id);
   if (element === null) {
     throw new Error(`Failed to find the element with ID: ${id}`);
@@ -10,12 +10,12 @@ export function getElement(id: string) {
   return element;
 }
 
-export function hide(element: HTMLElement) {
+export function hide(element: HTMLElement): void {
   element.style.display = DISPLAY_HIDDEN;
 }
 
 /**
- * parseIntSafe is a more reliable version of parseInt. By default, "parseInt('1a')" will return
+ * `parseIntSafe` is a more reliable version of `parseInt`. By default, "parseInt('1a')" will return
  * "1", which is unexpected. This returns either an integer or NaN.
  */
 export function parseIntSafe(input: string): number {
@@ -23,33 +23,33 @@ export function parseIntSafe(input: string): number {
     return NaN;
   }
 
-  // Remove all leading and trailing whitespace
+  // Remove all leading and trailing whitespace.
   let trimmedInput = input.trim();
 
   const isNegativeNumber = trimmedInput.startsWith("-");
   if (isNegativeNumber) {
-    // Remove the leading minus sign before we match the regular expression
+    // Remove the leading minus sign before we match the regular expression.
     trimmedInput = trimmedInput.substring(1);
   }
 
   if (/^\d+$/.exec(trimmedInput) === null) {
-    // "\d" matches any digit (same as "[0-9]")
+    // "\d" matches any digit (same as "[0-9]").
     return NaN;
   }
 
   if (isNegativeNumber) {
-    // Add the leading minus sign back
+    // Add the leading minus sign back.
     trimmedInput = `-${trimmedInput}`;
   }
 
   return parseInt(trimmedInput, 10);
 }
 
-export function show(element: HTMLElement) {
+export function show(element: HTMLElement): void {
   element.style.display = DISPLAY_VISIBLE;
 }
 
-export function toggle(element: HTMLElement) {
+export function toggle(element: HTMLElement): void {
   if (element.style.display === DISPLAY_HIDDEN) {
     show(element);
   } else {

@@ -23,19 +23,23 @@ var WIKI_PREFIX = "https://bindingofisaacrebirth.fandom.com/wiki/";
 var HIDE_TEXT = "Hide";
 var SHOW_TEXT = "Show";
 function fillPage(isaacSaveFile) {
-    // Build out the tables on the page
+    // Build out the tables on the page.
     fillAchievements(isaacSaveFile);
     fillCollectibles(isaacSaveFile);
     fillEasterEggs(isaacSaveFile);
-    // Show it
+    // Show it.
     (0, selectSaveFileSubroutines_1.hideSelectSaveFileArea)();
     var saveFileStats = (0, util_1.getElement)(SAVE_FILE_STATS_ID);
     (0, util_1.show)(saveFileStats);
 }
 exports.fillPage = fillPage;
 function fillAchievements(isaacSaveFile) {
-    var achievementChunk = isaacSaveFile.chunks[1 /* ACHIEVEMENTS */ - 1]
-        .body;
+    // eslint-disable-next-line isaacscript/strict-enums
+    var chunk = isaacSaveFile.chunks[1 /* ChunkType.ACHIEVEMENTS */ - 1];
+    if (chunk === undefined) {
+        throw new Error("Failed to get the achievement chunk.");
+    }
+    var achievementChunk = chunk.body;
     var ourAchievements = achievementChunk.achievements;
     var numAchievements = achievementChunk.count - 1; // Account for the 0th element
     fillTable("achievements", ourAchievements, numAchievements, fillAchievementsAddRow);
@@ -46,6 +50,7 @@ function fillAchievementsAddRow(i, tBody) {
     rowData.push(id);
     var key = id;
     var description = achievements[key];
+    // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
     if (description === undefined) {
         throw new Error("Failed to find the achievement for ID: ".concat(id));
     }
@@ -59,11 +64,15 @@ function fillAchievementsAddRow(i, tBody) {
     addRow(tBody, rowData);
 }
 function fillCollectibles(isaacSaveFile) {
-    var collectiblesChunk = isaacSaveFile.chunks[4 /* COLLECTIBLES */ - 1]
-        .body;
+    // eslint-disable-next-line isaacscript/strict-enums
+    var chunk = isaacSaveFile.chunks[4 /* ChunkType.COLLECTIBLES */ - 1];
+    if (chunk === undefined) {
+        throw new Error("Failed to get the collectibles chunk.");
+    }
+    var collectiblesChunk = chunk.body;
     var ourCollectibles = collectiblesChunk.seenById;
-    // We can't derive the number of collectibles from the save file, because they are not contiguous
-    // Instead, we derive it from the JSON file
+    // We can't derive the number of collectibles from the save file, because they are not contiguous.
+    // Instead, we derive it from the JSON file.
     var numCollectibles = getNumCollectiblesFromJSON();
     fillTable("collectibles", ourCollectibles, numCollectibles, fillCollectiblesAddRow);
 }
@@ -76,18 +85,21 @@ function getNumCollectiblesFromJSON() {
             continue;
         }
         if (collectibleType > 0 && collectibleType < 1000) {
-            numCollectibles += 1;
+            numCollectibles++;
         }
     }
     return numCollectibles;
 }
 function fillCollectiblesAddRow(i, tBody) {
-    // The collectible IDs are not contiguous, so do nothing if this particular item does not exist
+    // The collectible IDs are not contiguous, so do nothing if this particular item does not exist.
     var collectibleDescription = getCollectibleDescription(i);
     if (collectibleDescription === undefined) {
         return;
     }
     var name = collectibleDescription.name;
+    if (typeof name !== "string") {
+        throw new Error("Collectible ".concat(i, " did not have a name in the JSON description."));
+    }
     var rowData = [];
     var id = i.toString();
     rowData.push(id);
@@ -108,11 +120,11 @@ function getCollectibleDescription(id) {
 function getPoolsForCollectible(i) {
     var id = i.toString();
     // The "itempools.json" file was generated automatically from the "itempools.xml" file using an
-    // online converter
+    // online converter.
     var pools = [];
     for (var _i = 0, _a = itemPools.ItemPools.Pool; _i < _a.length; _i++) {
         var pool = _a[_i];
-        // Convert e.g. "bossRoom" to "Boss Room"
+        // Convert e.g. "bossRoom" to "Boss Room".
         // eslint-disable-next-line no-underscore-dangle
         var poolNameEntry = itemPoolNameMap_1.ITEM_POOL_NAME_MAP.get(pool._Name);
         var poolName = poolNameEntry === undefined ? "Unknown" : poolNameEntry;
@@ -134,10 +146,15 @@ function getPoolsText(pools) {
     return pools.join(", ");
 }
 function fillEasterEggs(isaacSaveFile) {
-    var easterEggChunk = isaacSaveFile.chunks[10 /* SPECIAL_SEED_COUNTERS */ - 1].body;
+    // eslint-disable-next-line isaacscript/strict-enums
+    var chunk = isaacSaveFile.chunks[10 /* ChunkType.SPECIAL_SEED_COUNTERS */ - 1];
+    if (chunk === undefined) {
+        throw new Error("Failed to get the easter egg chunk.");
+    }
+    var easterEggChunk = chunk.body;
     var ourEasterEggs = easterEggChunk.countById;
-    // We can't derive the number of easter eggs from the save file, because they are not contiguous
-    // Instead, we derive it from the JSON file
+    // We can't derive the number of easter eggs from the save file, because they are not contiguous.
+    // Instead, we derive it from the JSON file.
     var numEasterEggs = getNumEasterEggsFromJSON();
     fillTable("easter-eggs", ourEasterEggs, numEasterEggs, fillEasterEggsAddRow);
 }
@@ -149,12 +166,12 @@ function getNumEasterEggsFromJSON() {
         if (Number.isNaN(collectibleType)) {
             continue;
         }
-        numEasterEggs += 1;
+        numEasterEggs++;
     }
     return numEasterEggs;
 }
 function fillEasterEggsAddRow(i, tBody) {
-    // The easter eggs IDs are not contiguous, so do nothing if this particular item does not exist
+    // The easter eggs IDs are not contiguous, so do nothing if this particular item does not exist.
     var easterEggDescription = getEasterEggDescription(i);
     if (easterEggDescription === undefined) {
         return;
@@ -182,16 +199,16 @@ function fillTable(prefix, things, numTotal, addRowFunc) {
     var toggleElement = (0, util_1.getElement)("".concat(prefix, "-toggle"));
     var sectionElement = (0, util_1.getElement)("".concat(prefix, "-section"));
     var numGotten = 0;
-    // There is never a thing corresponding to the 0th element in the array, so we skip it
+    // There is never a thing corresponding to the 0th element in the array, so we skip it.
     for (var i = 1; i < things.length; i++) {
         var gotten = things[i] !== 0;
-        // Some arrays contain data that is not contiguous
+        // Some arrays contain data that is not contiguous.
         if (gotten) {
             if ((prefix === "collectibles" && !isValidCollectibleID(i)) ||
                 (prefix === "easter-eggs" && !isValidEasterEgg(i))) {
                 continue;
             }
-            numGotten += 1;
+            numGotten++;
         }
         else {
             addRowFunc(i, tBodyElement);
@@ -290,7 +307,7 @@ exports.readFile = void 0;
 var fillPage_1 = __webpack_require__(/*! ./fillPage */ "./src/fillPage.ts");
 var selectSaveFileSubroutines_1 = __webpack_require__(/*! ./selectSaveFileSubroutines */ "./src/selectSaveFileSubroutines.ts");
 var HEADER_LENGTH = 16;
-// Run files are ones that contain data for a run that has been exited mid-way through
+// Run files are ones that contain data for a run that has been exited mid-way through.
 // e.g. gamestate1.dat
 var REBIRTH_RUN_HEADER = "ISAACNG_GSR0018";
 var AFTERBIRTH_RUN_HEADER = "ISAACNG_GSR0034";
@@ -302,19 +319,22 @@ var RUN_HEADERS = new Set([
     AFTERBIRTH_PLUS_RUN_HEADER,
     REPENTANCE_RUN_HEADER,
 ]);
-// Persistent files are ones that contain data for the entire save file
+// Persistent files are ones that contain data for the entire save file.
 // e.g. persistentgamedata1.dat
 var REBIRTH_PERSISTENT_HEADER = "ISAACNGSAVE06R";
 var AFTERBIRTH_PERSISTENT_HEADER = "ISAACNGSAVE08R";
 var AFTERBIRTH_PLUS_AND_REPENTANCE_PERSISTENT_HEADER = "ISAACNGSAVE09R";
 // Afterbirth+ actually has 403 achievements, but the size of the array is 404 because there is no
-// 0th achievement
+// 0th achievement.
 var NUM_AFTERBIRTH_PLUS_ACHIEVEMENTS = 404;
 function readFile(files) {
-    var file = files[0];
+    var firstFile = files[0];
+    if (firstFile === undefined) {
+        throw new Error("Failed to get the first file from the file list.");
+    }
     var inputReader = new FileReader();
     inputReader.addEventListener("load", inputReaderLoad);
-    inputReader.readAsArrayBuffer(file);
+    inputReader.readAsArrayBuffer(firstFile);
 }
 exports.readFile = readFile;
 function inputReaderLoad() {
@@ -333,15 +353,15 @@ function parseSaveFile(fileReader) {
     }
     verifyHeader(arrayBuffer);
     // The format of the save file was reversed by Blade using: https://ide.kaitai.io/
-    // It produces a JavaScript decoder that we leverage here
+    // It produces a JavaScript decoder that we leverage here.
     var kaitaiStream = new KaitaiStream(arrayBuffer);
     var isaacSaveFile = new IsaacSaveFile(kaitaiStream);
     verifyNotAfterbirthPlus(isaacSaveFile);
     return isaacSaveFile;
 }
 function verifyHeader(arrayBuffer) {
-    // Before we invoke the real parser, we manually extract the header
-    // (for the purposes of showing a better error message)
+    // Before we invoke the real parser, we manually extract the header (for the purposes of showing a
+    // better error message).
     var headerBytes = arrayBuffer.slice(0, HEADER_LENGTH);
     var header = arrayBufferToString(headerBytes);
     if (RUN_HEADERS.has(header)) {
@@ -372,10 +392,14 @@ function removeNullCharacters(string) {
     return string.replace(/\0/g, "");
 }
 function verifyNotAfterbirthPlus(isaacSaveFile) {
-    // Since Afterbirth+ has the same save file header as Repentance,
-    // we must use some other save file property to tell the difference
-    var achievements = isaacSaveFile.chunks[1 /* ACHIEVEMENTS */ - 1];
-    if (achievements.len === NUM_AFTERBIRTH_PLUS_ACHIEVEMENTS) {
+    // Since Afterbirth+ has the same save file header as Repentance, we must use some other save file
+    // property to tell the difference.
+    // eslint-disable-next-line isaacscript/strict-enums
+    var chunk = isaacSaveFile.chunks[1 /* ChunkType.ACHIEVEMENTS */ - 1];
+    if (chunk === undefined) {
+        throw new Error("Failed to get the achievements chunk.");
+    }
+    if (chunk.len === NUM_AFTERBIRTH_PLUS_ACHIEVEMENTS) {
         errorWrongGameType("Afterbirth+");
     }
 }
@@ -478,26 +502,26 @@ function hide(element) {
 }
 exports.hide = hide;
 /**
- * parseIntSafe is a more reliable version of parseInt. By default, "parseInt('1a')" will return
+ * `parseIntSafe` is a more reliable version of `parseInt`. By default, "parseInt('1a')" will return
  * "1", which is unexpected. This returns either an integer or NaN.
  */
 function parseIntSafe(input) {
     if (typeof input !== "string") {
         return NaN;
     }
-    // Remove all leading and trailing whitespace
+    // Remove all leading and trailing whitespace.
     var trimmedInput = input.trim();
     var isNegativeNumber = trimmedInput.startsWith("-");
     if (isNegativeNumber) {
-        // Remove the leading minus sign before we match the regular expression
+        // Remove the leading minus sign before we match the regular expression.
         trimmedInput = trimmedInput.substring(1);
     }
     if (/^\d+$/.exec(trimmedInput) === null) {
-        // "\d" matches any digit (same as "[0-9]")
+        // "\d" matches any digit (same as "[0-9]").
         return NaN;
     }
     if (isNegativeNumber) {
-        // Add the leading minus sign back
+        // Add the leading minus sign back.
         trimmedInput = "-".concat(trimmedInput);
     }
     return parseInt(trimmedInput, 10);

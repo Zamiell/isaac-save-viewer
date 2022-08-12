@@ -1,7 +1,7 @@
 import { readFile } from "./readFile";
 import { getSelectSaveFileButton } from "./selectSaveFileSubroutines";
 
-export function selectSaveFileButtonInit() {
+export function selectSaveFileButtonInit(): void {
   const chooseSaveFileButton = getSelectSaveFileButton();
   chooseSaveFileButton.addEventListener("change", chooseSaveFileButtonUsed);
 }

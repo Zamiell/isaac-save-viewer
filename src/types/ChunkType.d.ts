@@ -1,5 +1,5 @@
-// Copied from IsaacSaveFile.js
-// (this must be a constant enum so that we can use it in normal TypeScript code)
+// Copied from IsaacSaveFile.js. (This must be a constant enum so that we can use it in normal
+// TypeScript code.)
 declare const enum ChunkType {
   ACHIEVEMENTS = 1,
   COUNTERS = 2,

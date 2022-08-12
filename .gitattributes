@@ -1,5 +1,15 @@
-# Prevent Windows systems from cloning this repository with "\r\n" line endings
+# Prevent Windows systems from cloning this repository with "\r\n" line endings.
 core.autocrlf=false
 
-# Convert all files to use "\n" line endings
+# Prevent people from making merge commits:
+# https://www.endoflineblog.com/gitflow-considered-harmful
+pull.rebase=true
+
+# Convert all files to use "\n" line endings.
 * text=auto eol=lf
+
+# Specify the file type for VSCode/TypeScript files.
+.vscode/extensions.json linguist-language=JSON-with-Comments
+.vscode/settings.json linguist-language=JSON-with-Comments
+tsconfig.*.json linguist-language=JSON-with-Comments
+tsconfig.json linguist-language=JSON-with-Comments

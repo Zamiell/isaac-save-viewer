@@ -13,21 +13,26 @@ const WIKI_PREFIX = "https://bindingofisaacrebirth.fandom.com/wiki/";
 const HIDE_TEXT = "Hide";
 const SHOW_TEXT = "Show";
 
-export function fillPage(isaacSaveFile: IsaacSaveFile) {
-  // Build out the tables on the page
+export function fillPage(isaacSaveFile: IsaacSaveFile): void {
+  // Build out the tables on the page.
   fillAchievements(isaacSaveFile);
   fillCollectibles(isaacSaveFile);
   fillEasterEggs(isaacSaveFile);
 
-  // Show it
+  // Show it.
   hideSelectSaveFileArea();
   const saveFileStats = getElement(SAVE_FILE_STATS_ID);
   show(saveFileStats);
 }
 
 function fillAchievements(isaacSaveFile: IsaacSaveFile) {
-  const achievementChunk = isaacSaveFile.chunks[ChunkType.ACHIEVEMENTS - 1]
-    .body as AchievementsChunk;
+  // eslint-disable-next-line isaacscript/strict-enums
+  const chunk = isaacSaveFile.chunks[ChunkType.ACHIEVEMENTS - 1];
+  if (chunk === undefined) {
+    throw new Error("Failed to get the achievement chunk.");
+  }
+
+  const achievementChunk = chunk.body as AchievementsChunk;
   const ourAchievements = achievementChunk.achievements;
   const numAchievements = achievementChunk.count - 1; // Account for the 0th element
 
@@ -47,6 +52,7 @@ function fillAchievementsAddRow(i: number, tBody: HTMLTableElement) {
 
   const key = id as keyof typeof achievements;
   const description = achievements[key];
+  // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
   if (description === undefined) {
     throw new Error(`Failed to find the achievement for ID: ${id}`);
   }
@@ -66,12 +72,16 @@ function fillAchievementsAddRow(i: number, tBody: HTMLTableElement) {
 }
 
 function fillCollectibles(isaacSaveFile: IsaacSaveFile) {
-  const collectiblesChunk = isaacSaveFile.chunks[ChunkType.COLLECTIBLES - 1]
-    .body as CollectiblesChunk;
+  // eslint-disable-next-line isaacscript/strict-enums
+  const chunk = isaacSaveFile.chunks[ChunkType.COLLECTIBLES - 1];
+  if (chunk === undefined) {
+    throw new Error("Failed to get the collectibles chunk.");
+  }
+  const collectiblesChunk = chunk.body as CollectiblesChunk;
   const ourCollectibles = collectiblesChunk.seenById;
 
-  // We can't derive the number of collectibles from the save file, because they are not contiguous
-  // Instead, we derive it from the JSON file
+  // We can't derive the number of collectibles from the save file, because they are not contiguous.
+  // Instead, we derive it from the JSON file.
   const numCollectibles = getNumCollectiblesFromJSON();
 
   fillTable(
@@ -91,7 +101,7 @@ function getNumCollectiblesFromJSON() {
     }
 
     if (collectibleType > 0 && collectibleType < 1000) {
-      numCollectibles += 1;
+      numCollectibles++;
     }
   }
 
@@ -99,12 +109,18 @@ function getNumCollectiblesFromJSON() {
 }
 
 function fillCollectiblesAddRow(i: number, tBody: HTMLTableElement) {
-  // The collectible IDs are not contiguous, so do nothing if this particular item does not exist
+  // The collectible IDs are not contiguous, so do nothing if this particular item does not exist.
   const collectibleDescription = getCollectibleDescription(i);
   if (collectibleDescription === undefined) {
     return;
   }
+
   const { name } = collectibleDescription;
+  if (typeof name !== "string") {
+    throw new Error(
+      `Collectible ${i} did not have a name in the JSON description.`,
+    );
+  }
 
   const rowData: string[] = [];
 
@@ -123,7 +139,9 @@ function fillCollectiblesAddRow(i: number, tBody: HTMLTableElement) {
   addRow(tBody, rowData);
 }
 
-function getCollectibleDescription(id: number) {
+function getCollectibleDescription(
+  id: number,
+): Record<string, unknown> | undefined {
   const key = id as unknown as keyof typeof items;
   const itemDescription = items[key];
 
@@ -134,10 +152,10 @@ function getPoolsForCollectible(i: number) {
   const id = i.toString();
 
   // The "itempools.json" file was generated automatically from the "itempools.xml" file using an
-  // online converter
+  // online converter.
   const pools: string[] = [];
   for (const pool of itemPools.ItemPools.Pool) {
-    // Convert e.g. "bossRoom" to "Boss Room"
+    // Convert e.g. "bossRoom" to "Boss Room".
     // eslint-disable-next-line no-underscore-dangle
     const poolNameEntry = ITEM_POOL_NAME_MAP.get(pool._Name);
     const poolName = poolNameEntry === undefined ? "Unknown" : poolNameEntry;
@@ -163,13 +181,17 @@ function getPoolsText(pools: string[]) {
 }
 
 function fillEasterEggs(isaacSaveFile: IsaacSaveFile) {
-  const easterEggChunk = isaacSaveFile.chunks[
-    ChunkType.SPECIAL_SEED_COUNTERS - 1
-  ].body as SpecialSeedCountersChunk;
+  // eslint-disable-next-line isaacscript/strict-enums
+  const chunk = isaacSaveFile.chunks[ChunkType.SPECIAL_SEED_COUNTERS - 1];
+  if (chunk === undefined) {
+    throw new Error("Failed to get the easter egg chunk.");
+  }
+
+  const easterEggChunk = chunk.body as SpecialSeedCountersChunk;
   const ourEasterEggs = easterEggChunk.countById;
 
-  // We can't derive the number of easter eggs from the save file, because they are not contiguous
-  // Instead, we derive it from the JSON file
+  // We can't derive the number of easter eggs from the save file, because they are not contiguous.
+  // Instead, we derive it from the JSON file.
   const numEasterEggs = getNumEasterEggsFromJSON();
 
   fillTable("easter-eggs", ourEasterEggs, numEasterEggs, fillEasterEggsAddRow);
@@ -183,14 +205,14 @@ function getNumEasterEggsFromJSON() {
       continue;
     }
 
-    numEasterEggs += 1;
+    numEasterEggs++;
   }
 
   return numEasterEggs;
 }
 
 function fillEasterEggsAddRow(i: number, tBody: HTMLTableElement) {
-  // The easter eggs IDs are not contiguous, so do nothing if this particular item does not exist
+  // The easter eggs IDs are not contiguous, so do nothing if this particular item does not exist.
   const easterEggDescription = getEasterEggDescription(i);
   if (easterEggDescription === undefined) {
     return;
@@ -208,7 +230,13 @@ function fillEasterEggsAddRow(i: number, tBody: HTMLTableElement) {
   addRow(tBody, rowData);
 }
 
-function getEasterEggDescription(id: number) {
+interface EasterEggDescription {
+  seed: string;
+  inGameDescription: string;
+  effectsDescription: string;
+}
+
+function getEasterEggDescription(id: number): EasterEggDescription | undefined {
   const key = id as unknown as keyof typeof easterEggs;
   const easterEggDescription = easterEggs[key];
 
@@ -231,11 +259,11 @@ function fillTable(
 
   let numGotten = 0;
 
-  // There is never a thing corresponding to the 0th element in the array, so we skip it
+  // There is never a thing corresponding to the 0th element in the array, so we skip it.
   for (let i = 1; i < things.length; i++) {
     const gotten = things[i] !== 0;
 
-    // Some arrays contain data that is not contiguous
+    // Some arrays contain data that is not contiguous.
     if (gotten) {
       if (
         (prefix === "collectibles" && !isValidCollectibleID(i)) ||
@@ -244,7 +272,7 @@ function fillTable(
         continue;
       }
 
-      numGotten += 1;
+      numGotten++;
     } else {
       addRowFunc(i, tBodyElement);
     }
