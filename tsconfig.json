@@ -2,14 +2,12 @@
 {
   "$schema": "https://raw.githubusercontent.com/IsaacScript/isaacscript/main/packages/isaacscript-cli/schemas/tsconfig-strict-schema.json",
 
-  // We extend the standard IsaacScript config:
-  // https://github.com/IsaacScript/isaacscript/blob/main/packages/isaacscript-tsconfig/configs/tsconfig.browser.json
+  // We extend the browser IsaacScript config:
+  // https://github.com/IsaacScript/isaacscript/blob/main/packages/isaacscript-tsconfig/tsconfig.browser.json
   "extends": "isaacscript-tsconfig/tsconfig.browser.json",
 
   // https://www.typescriptlang.org/docs/handbook/compiler-options.html
   "compilerOptions": {
-    "outDir": "dist",
-
     // This project imports JSON files.
     "resolveJsonModule": true,
 

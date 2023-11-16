@@ -17,9 +17,10 @@ function chooseSaveFileButtonUsed(event: Event) {
     return;
   }
 
-  if (files.length === 0) {
+  const file = files[0];
+  if (file === undefined) {
     return;
   }
 
-  readFile(files);
+  readFile(file);
 }

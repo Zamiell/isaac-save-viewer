@@ -28,16 +28,11 @@ const AFTERBIRTH_PLUS_AND_REPENTANCE_PERSISTENT_HEADER = "ISAACNGSAVE09R";
 // 0th achievement.
 const NUM_AFTERBIRTH_PLUS_ACHIEVEMENTS = 404;
 
-export function readFile(files: FileList): void {
-  const firstFile = files[0];
-  if (firstFile === undefined) {
-    throw new Error("Failed to get the first file from the file list.");
-  }
-
+export function readFile(file: File): void {
   const fileReader = new FileReader();
   fileReader.addEventListener("load", inputReaderLoad);
   // eslint-disable-next-line unicorn/prefer-blob-reading-methods
-  fileReader.readAsArrayBuffer(firstFile);
+  fileReader.readAsArrayBuffer(file);
 }
 
 function inputReaderLoad(this: FileReader) {
