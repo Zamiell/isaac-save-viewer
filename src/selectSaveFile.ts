@@ -1,5 +1,5 @@
-import { readFile } from "./readFile";
-import { getSelectSaveFileButton } from "./selectSaveFileSubroutines";
+import { readFile } from "./readFile.js";
+import { getSelectSaveFileButton } from "./selectSaveFileSubroutines.js";
 
 export function selectSaveFileButtonInit(): void {
   const chooseSaveFileButton = getSelectSaveFileButton();

@@ -1,5 +1,7 @@
+import { ReadonlyMap } from "isaacscript-common-ts";
+
 /** Listed in order of how they appear in the "itempools.xml" file. */
-export const ITEM_POOL_NAME_MAP = new Map<string, string>([
+export const ITEM_POOL_NAME_MAP = new ReadonlyMap<string, string>([
   ["treasure", "Treasure Room"],
   ["shop", "Shop"],
   ["boss", "Boss Room"],

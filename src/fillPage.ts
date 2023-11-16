@@ -1,10 +1,11 @@
+import { parseIntSafe } from "isaacscript-common-ts";
 import * as achievements from "./data/achievements.json";
 import * as easterEggs from "./data/easterEggs.json";
 import * as itemPools from "./data/itempools.json";
 import * as items from "./data/items.json";
-import { ITEM_POOL_NAME_MAP } from "./itemPoolNameMap";
-import { hideSelectSaveFileArea } from "./selectSaveFileSubroutines";
-import { getElement, hide, parseIntSafe, show, toggle } from "./util";
+import { ITEM_POOL_NAME_MAP } from "./itemPoolNameMap.js";
+import { hideSelectSaveFileArea } from "./selectSaveFileSubroutines.js";
+import { getElement, hide, show, toggle } from "./utils.js";
 
 type Prefix = "achievements" | "collectibles" | "easter-eggs";
 
@@ -26,7 +27,6 @@ export function fillPage(isaacSaveFile: IsaacSaveFile): void {
 }
 
 function fillAchievements(isaacSaveFile: IsaacSaveFile) {
-  // eslint-disable-next-line isaacscript/strict-enums
   const chunk = isaacSaveFile.chunks[ChunkType.ACHIEVEMENTS - 1];
   if (chunk === undefined) {
     throw new Error("Failed to get the achievement chunk.");
@@ -63,16 +63,12 @@ function fillAchievementsAddRow(i: number, tBody: HTMLTableElement) {
   rowData.push(linkedName);
 
   const image = `<img src="img/achievements/${id}.png" />`;
-  rowData.push(image);
-
-  rowData.push(inGameDescription);
-  rowData.push(unlockDescription);
+  rowData.push(image, inGameDescription, unlockDescription);
 
   addRow(tBody, rowData);
 }
 
 function fillCollectibles(isaacSaveFile: IsaacSaveFile) {
-  // eslint-disable-next-line isaacscript/strict-enums
   const chunk = isaacSaveFile.chunks[ChunkType.COLLECTIBLES - 1];
   if (chunk === undefined) {
     throw new Error("Failed to get the collectibles chunk.");
@@ -96,7 +92,7 @@ function getNumCollectiblesFromJSON() {
   let numCollectibles = 0;
   for (const key of Object.keys(items)) {
     const collectibleType = parseIntSafe(key);
-    if (Number.isNaN(collectibleType)) {
+    if (collectibleType === undefined) {
       continue;
     }
 
@@ -117,7 +113,7 @@ function fillCollectiblesAddRow(i: number, tBody: HTMLTableElement) {
 
   const { name } = collectibleDescription;
   if (typeof name !== "string") {
-    throw new Error(
+    throw new TypeError(
       `Collectible ${i} did not have a name in the JSON description.`,
     );
   }
@@ -125,8 +121,7 @@ function fillCollectiblesAddRow(i: number, tBody: HTMLTableElement) {
   const rowData: string[] = [];
 
   const id = i.toString();
-  rowData.push(id);
-  rowData.push(name);
+  rowData.push(id, name);
 
   const filename = id.padStart(3, "0");
   const image = `<img src="img/collectibles/collectibles_${filename}.png" />`;
@@ -156,12 +151,11 @@ function getPoolsForCollectible(i: number) {
   const pools: string[] = [];
   for (const pool of itemPools.ItemPools.Pool) {
     // Convert e.g. "bossRoom" to "Boss Room".
-    // eslint-disable-next-line no-underscore-dangle
+
     const poolNameEntry = ITEM_POOL_NAME_MAP.get(pool._Name);
-    const poolName = poolNameEntry === undefined ? "Unknown" : poolNameEntry;
+    const poolName = poolNameEntry ?? "Unknown";
 
     for (const item of pool.Item) {
-      // eslint-disable-next-line no-underscore-dangle
       if (item._Id === id) {
         pools.push(poolName);
         break;
@@ -181,7 +175,6 @@ function getPoolsText(pools: string[]) {
 }
 
 function fillEasterEggs(isaacSaveFile: IsaacSaveFile) {
-  // eslint-disable-next-line isaacscript/strict-enums
   const chunk = isaacSaveFile.chunks[ChunkType.SPECIAL_SEED_COUNTERS - 1];
   if (chunk === undefined) {
     throw new Error("Failed to get the easter egg chunk.");
@@ -222,10 +215,7 @@ function fillEasterEggsAddRow(i: number, tBody: HTMLTableElement) {
   const rowData: string[] = [];
 
   const id = i.toString();
-  rowData.push(id);
-  rowData.push(seed);
-  rowData.push(inGameDescription);
-  rowData.push(effectsDescription);
+  rowData.push(id, seed, inGameDescription, effectsDescription);
 
   addRow(tBody, rowData);
 }

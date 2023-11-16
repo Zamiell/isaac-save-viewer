@@ -1,4 +1,4 @@
-import { getElement, hide, show } from "./util";
+import { getElement, hide, show } from "./utils.js";
 
 const CHOOSE_SAVE_FILE_BUTTON_ID = "choose-save-file";
 const CHOOSE_SAVE_FILE_ERROR_ID = "choose-save-file-error";

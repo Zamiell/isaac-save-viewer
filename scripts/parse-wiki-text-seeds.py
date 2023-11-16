@@ -97,8 +97,8 @@ def error(msg: str):
 
 
 def clean_html(raw_html):
-    cleantext = re.sub(HTML_CLEANER, "", raw_html)
-    return cleantext.strip()
+    clean_text = re.sub(HTML_CLEANER, "", raw_html)
+    return clean_text.strip()
 
 
 if __name__ == "__main__":

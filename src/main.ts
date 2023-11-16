@@ -1,5 +1,5 @@
-import { selectSaveFileButtonInit } from "./selectSaveFile";
+import { selectSaveFileButtonInit } from "./selectSaveFile.js";
 
-window.onload = () => {
+window.addEventListener("load", () => {
   selectSaveFileButtonInit();
-};
+});

@@ -1,0 +1,11 @@
+{
+  "$schema": "https://unpkg.com/knip/schema.json",
+  "ignore": [
+    ".eslintrc.cjs",
+    "prettier.config.mjs",
+    "static/lib/IsaacSaveFile.js",
+    "static/lib/KaitaiStream.js",
+    "static/main.js",
+  ],
+  "ignoreDependencies": ["isaacscript-lint"],
+}

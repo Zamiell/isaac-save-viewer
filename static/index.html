@@ -1,24 +1,30 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
   <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Isaac Save Viewer</title>
-    <link rel="shortcut icon" type="image/jpg" href="favicon.ico"/>
+    <link rel="shortcut icon" type="image/jpg" href="favicon.ico" />
 
     <!-- Bulma -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css"
+    />
 
     <!-- Source Sans Pro -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap"
+      rel="stylesheet"
+    />
 
     <!-- KaitaiStream -->
     <script src="lib/KaitaiStream.js"></script>
     <script src="lib/IsaacSaveFile.js"></script>
 
-    <link rel="stylesheet" type="text/css" href="main.css">
+    <link rel="stylesheet" type="text/css" href="main.css" />
     <script src="main.js"></script>
   </head>
 
@@ -27,31 +33,56 @@
       <div class="container">
         <div class="columns is-centered has-text-centered">
           <div class="column is-half">
-            <h1 class="title">
-              Isaac Save Viewer
-            </h1>
+            <h1 class="title">Isaac Save Viewer</h1>
             <p class="subtitle">
               A tool to track completion status for<br />
-              <i><a href="https://store.steampowered.com/app/1426300/The_Binding_of_Isaac_Repentance/">The Binding of Isaac: Repentance</a></i>
+              <i
+                ><a
+                  href="https://store.steampowered.com/app/1426300/The_Binding_of_Isaac_Repentance/"
+                  >The Binding of Isaac: Repentance</a
+                ></i
+              >
             </p>
           </div>
         </div>
 
         <hr />
 
-        <div id="choose-save-file-column" class="columns is-centered has-text-centered">
+        <div
+          id="choose-save-file-column"
+          class="columns is-centered has-text-centered"
+        >
           <div class="column">
             <input id="choose-save-file" type="file" accept=".dat" />
-            <label for="choose-save-file" id="choose-save-file-label" class="button is-warning">
+            <label
+              for="choose-save-file"
+              id="choose-save-file-label"
+              class="button is-warning"
+            >
               Select save file
             </label>
             <p>Hint: The default location is:</p>
-            <p><code>C:\Program Files (x86)\Steam\userdata\[Your Steam ID]\250900\remote\rep_persistentgamedata1.dat</code>
+            <p>
+              <code
+                >C:\Program Files (x86)\Steam\userdata\[Your Steam
+                ID]\250900\remote\rep_persistentgamedata1.dat</code
+              >
+            </p>
             <div class="half-spacing"></div>
-            <p class>For more information, see my <a href="https://pastebin.com/kJFkFKz1">explanation on Pastebin</a>.</p>
+            <p class>
+              For more information, see my
+              <a href="https://pastebin.com/kJFkFKz1">explanation on Pastebin</a
+              >.
+            </p>
             <div id="choose-save-file-error">
-              <article id="choose-save-file-error-article" class="message is-danger">
-                <div id="choose-save-file-error-text" class="message-body"></div>
+              <article
+                id="choose-save-file-error-article"
+                class="message is-danger"
+              >
+                <div
+                  id="choose-save-file-error-text"
+                  class="message-body"
+                ></div>
               </article>
             </div>
           </div>
@@ -63,7 +94,8 @@
               <div class="level-left">
                 <div class="level-item">
                   <h2 class="title is-4">
-                    Achievements (<span id="achievements-gotten"></span> / <span id="achievements-total"></span>)
+                    Achievements (<span id="achievements-gotten"></span> /
+                    <span id="achievements-total"></span>)
                   </h2>
                 </div>
                 <div class="level-item">
@@ -83,8 +115,7 @@
                     <th>Unlock Description</th>
                   </tr>
                 </thead>
-                <tbody id="achievements-table-tbody">
-                </tbody>
+                <tbody id="achievements-table-tbody"></tbody>
               </table>
 
               <p id="achievements-completed">n/a</p>
@@ -96,7 +127,8 @@
               <div class="level-left">
                 <div class="level-item">
                   <h2 class="title is-4">
-                    Collectibles Touched (<span id="collectibles-gotten"></span> / <span id="collectibles-total"></span>)
+                    Collectibles Touched (<span id="collectibles-gotten"></span>
+                    / <span id="collectibles-total"></span>)
                   </h2>
                 </div>
                 <div class="level-item">
@@ -115,8 +147,7 @@
                     <th>Item Pools</th>
                   </tr>
                 </thead>
-                <tbody id="collectibles-table-tbody">
-                </tbody>
+                <tbody id="collectibles-table-tbody"></tbody>
               </table>
 
               <p id="collectibles-completed">n/a</p>
@@ -128,7 +159,8 @@
               <div class="level-left">
                 <div class="level-item">
                   <h2 class="title is-4">
-                    Easter Eggs (<span id="easter-eggs-gotten"></span> / <span id="easter-eggs-total"></span>)
+                    Easter Eggs (<span id="easter-eggs-gotten"></span> /
+                    <span id="easter-eggs-total"></span>)
                   </h2>
                 </div>
                 <div class="level-item">
@@ -147,13 +179,11 @@
                     <th>Effects</th>
                   </tr>
                 </thead>
-                <tbody id="easter-eggs-table-tbody">
-                </tbody>
+                <tbody id="easter-eggs-table-tbody"></tbody>
               </table>
 
               <p id="easter-eggs-completed">n/a</p>
             </section>
-
           </div>
         </div>
 
@@ -162,10 +192,21 @@
         <div class="columns is-centered has-text-centered">
           <div class="column is-half is-size-7">
             <p>Written by <a href="https://www.twitch.tv/zamiell">Zamiel</a></p>
-            <p>Save file format reversed by the talented <a href="https://github.com/bladecoding">Blade</a></p>
-            <p><a href="https://github.com/Zamiell/isaac-save-viewer/">Source code</a></p>
+            <p>
+              Save file format reversed by the talented
+              <a href="https://github.com/bladecoding">Blade</a>
+            </p>
+            <p>
+              <a href="https://github.com/Zamiell/isaac-save-viewer/"
+                >Source code</a
+              >
+            </p>
             <p><a href="https://isaacscript.github.io/">IsaacScript</a></p>
-            <p><a href="https://www.speedrun.com/repentance/resources">Download a full save file</a></p>
+            <p>
+              <a href="https://www.speedrun.com/repentance/resources"
+                >Download a full save file</a
+              >
+            </p>
           </div>
         </div>
       </div>

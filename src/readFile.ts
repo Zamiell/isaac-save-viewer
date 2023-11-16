@@ -1,5 +1,6 @@
-import { fillPage } from "./fillPage";
-import { selectSaveFileError } from "./selectSaveFileSubroutines";
+import { ReadonlySet } from "isaacscript-common-ts";
+import { fillPage } from "./fillPage.js";
+import { selectSaveFileError } from "./selectSaveFileSubroutines.js";
 
 const HEADER_LENGTH = 16;
 
@@ -9,7 +10,7 @@ const REBIRTH_RUN_HEADER = "ISAACNG_GSR0018";
 const AFTERBIRTH_RUN_HEADER = "ISAACNG_GSR0034";
 const AFTERBIRTH_PLUS_RUN_HEADER = "ISAACNG_GSR0065";
 const REPENTANCE_RUN_HEADER = "ISAACNG_GSR0142";
-const RUN_HEADERS = new Set([
+const RUN_HEADERS = new ReadonlySet([
   REBIRTH_RUN_HEADER,
   AFTERBIRTH_RUN_HEADER,
   AFTERBIRTH_PLUS_RUN_HEADER,
@@ -32,17 +33,18 @@ export function readFile(files: FileList): void {
     throw new Error("Failed to get the first file from the file list.");
   }
 
-  const inputReader = new FileReader();
-  inputReader.addEventListener("load", inputReaderLoad);
-  inputReader.readAsArrayBuffer(firstFile);
+  const fileReader = new FileReader();
+  fileReader.addEventListener("load", inputReaderLoad);
+  // eslint-disable-next-line unicorn/prefer-blob-reading-methods
+  fileReader.readAsArrayBuffer(firstFile);
 }
 
 function inputReaderLoad(this: FileReader) {
   try {
     const isaacSaveFile = parseSaveFile(this);
     fillPage(isaacSaveFile);
-  } catch (err) {
-    selectSaveFileError(err);
+  } catch (error) {
+    selectSaveFileError(error);
   }
 }
 
@@ -96,20 +98,20 @@ function verifyHeader(arrayBuffer: ArrayBuffer) {
   }
 }
 
-function arrayBufferToString(arrayBuffer: ArrayBuffer) {
-  const textDecoder = new TextDecoder("utf-8");
+function arrayBufferToString(arrayBuffer: ArrayBuffer): string {
+  const textDecoder = new TextDecoder("utf8");
   const string = textDecoder.decode(arrayBuffer).trim();
   return removeNullCharacters(string).trim();
 }
 
-function removeNullCharacters(string: string) {
-  return string.replace(/\0/g, "");
+function removeNullCharacters(string: string): string {
+  return string.replaceAll("\0", "");
 }
 
 function verifyNotAfterbirthPlus(isaacSaveFile: IsaacSaveFile) {
   // Since Afterbirth+ has the same save file header as Repentance, we must use some other save file
   // property to tell the difference.
-  // eslint-disable-next-line isaacscript/strict-enums
+
   const chunk = isaacSaveFile.chunks[ChunkType.ACHIEVEMENTS - 1];
   if (chunk === undefined) {
     throw new Error("Failed to get the achievements chunk.");
