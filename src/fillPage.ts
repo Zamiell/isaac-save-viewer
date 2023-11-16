@@ -151,7 +151,6 @@ function getPoolsForCollectible(i: number) {
   const pools: string[] = [];
   for (const pool of itemPools.ItemPools.Pool) {
     // Convert e.g. "bossRoom" to "Boss Room".
-
     const poolNameEntry = ITEM_POOL_NAME_MAP.get(pool._Name);
     const poolName = poolNameEntry ?? "Unknown";
 

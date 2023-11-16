@@ -111,7 +111,6 @@ function removeNullCharacters(string: string): string {
 function verifyNotAfterbirthPlus(isaacSaveFile: IsaacSaveFile) {
   // Since Afterbirth+ has the same save file header as Repentance, we must use some other save file
   // property to tell the difference.
-
   const chunk = isaacSaveFile.chunks[ChunkType.ACHIEVEMENTS - 1];
   if (chunk === undefined) {
     throw new Error("Failed to get the achievements chunk.");
