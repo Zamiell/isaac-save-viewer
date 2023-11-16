@@ -27630,7 +27630,7 @@
     show(saveFileStats);
   }
   function fillAchievements(isaacSaveFile) {
-    const chunk = isaacSaveFile.chunks[ChunkType.ACHIEVEMENTS - 1];
+    const chunk = isaacSaveFile.chunks[1 /* ACHIEVEMENTS */ - 1];
     if (chunk === void 0) {
       throw new Error("Failed to get the achievement chunk.");
     }
@@ -27661,7 +27661,7 @@
     addRow(tBody, rowData);
   }
   function fillCollectibles(isaacSaveFile) {
-    const chunk = isaacSaveFile.chunks[ChunkType.COLLECTIBLES - 1];
+    const chunk = isaacSaveFile.chunks[4 /* COLLECTIBLES */ - 1];
     if (chunk === void 0) {
       throw new Error("Failed to get the collectibles chunk.");
     }
@@ -27737,7 +27737,7 @@
     return pools.join(", ");
   }
   function fillEasterEggs(isaacSaveFile) {
-    const chunk = isaacSaveFile.chunks[ChunkType.SPECIAL_SEED_COUNTERS - 1];
+    const chunk = isaacSaveFile.chunks[10 /* SPECIAL_SEED_COUNTERS */ - 1];
     if (chunk === void 0) {
       throw new Error("Failed to get the easter egg chunk.");
     }
@@ -27900,7 +27900,7 @@
     return string.replaceAll("\0", "");
   }
   function verifyNotAfterbirthPlus(isaacSaveFile) {
-    const chunk = isaacSaveFile.chunks[ChunkType.ACHIEVEMENTS - 1];
+    const chunk = isaacSaveFile.chunks[1 /* ACHIEVEMENTS */ - 1];
     if (chunk === void 0) {
       throw new Error("Failed to get the achievements chunk.");
     }
