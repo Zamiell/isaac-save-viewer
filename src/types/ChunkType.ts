@@ -1,6 +1,9 @@
-// Copied from IsaacSaveFile.js. (This must be a constant enum so that we can use it in normal
-// TypeScript code.)
-declare const enum ChunkType {
+/**
+ * Copied from IsaacSaveFile.js.
+ *
+ * @public
+ */
+export enum ChunkType {
   ACHIEVEMENTS = 1,
   COUNTERS = 2,
   LEVEL_COUNTERS = 3,

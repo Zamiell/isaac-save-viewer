@@ -1,6 +1,7 @@
 import { ReadonlySet } from "isaacscript-common-ts";
 import { fillPage } from "./fillPage.js";
 import { selectSaveFileError } from "./selectSaveFileSubroutines.js";
+import { ChunkType } from "./types/ChunkType.js";
 
 const HEADER_LENGTH = 16;
 

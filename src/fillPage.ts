@@ -5,6 +5,7 @@ import * as itemPools from "./data/itempools.json";
 import * as items from "./data/items.json";
 import { ITEM_POOL_NAME_MAP } from "./itemPoolNameMap.js";
 import { hideSelectSaveFileArea } from "./selectSaveFileSubroutines.js";
+import { ChunkType } from "./types/ChunkType.js";
 import { getElement, hide, show, toggle } from "./utils.js";
 
 type Prefix = "achievements" | "collectibles" | "easter-eggs";
