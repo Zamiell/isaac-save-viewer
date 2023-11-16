@@ -10,6 +10,17 @@ jobs:
       - uses: ./.github/workflows/setup
       - run: npm run build
 
+      # @template-customization-start
+
+      - name: If publishing, upload build output
+        if: "needs.pr-check.outputs.number != 'null'"
+        uses: actions/upload-artifact@v3
+        with:
+          name: static-directory
+          path: ./static
+
+      # @template-customization-end
+
   lint:
     runs-on: ubuntu-latest
     steps:
@@ -24,6 +35,15 @@ jobs:
     needs: [build, lint]
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@v3
+      - uses: ./.github/workflows/setup
+
+      - name: Download mod output
+        uses: actions/download-artifact@v3
+        with:
+          name: static-directory
+          path: ./static
+
       - name: Deploy to GitHub pages
         uses: peaceiris/actions-gh-pages@v3
         with:
