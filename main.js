@@ -27605,11 +27605,11 @@
   function getSelectSaveFileButton() {
     return getElement(CHOOSE_SAVE_FILE_BUTTON_ID);
   }
-  function selectSaveFileError(err) {
+  function selectSaveFileError(error) {
     const errorElement = getElement(CHOOSE_SAVE_FILE_ERROR_ID);
     show(errorElement);
     const errorTextElement = getElement(CHOOSE_SAVE_FILE_ERROR_TEXT_ID);
-    errorTextElement.innerHTML = `${err}`;
+    errorTextElement.innerHTML = `${error}`;
   }
   function hideSelectSaveFileArea() {
     const saveFileArea = getElement(CHOOSE_SAVE_FILE_COLUMN_ID);
@@ -27838,14 +27838,10 @@
   var AFTERBIRTH_PERSISTENT_HEADER = "ISAACNGSAVE08R";
   var AFTERBIRTH_PLUS_AND_REPENTANCE_PERSISTENT_HEADER = "ISAACNGSAVE09R";
   var NUM_AFTERBIRTH_PLUS_ACHIEVEMENTS = 404;
-  function readFile(files) {
-    const firstFile = files[0];
-    if (firstFile === void 0) {
-      throw new Error("Failed to get the first file from the file list.");
-    }
+  function readFile(file) {
     const fileReader = new FileReader();
     fileReader.addEventListener("load", inputReaderLoad);
-    fileReader.readAsArrayBuffer(firstFile);
+    fileReader.readAsArrayBuffer(file);
   }
   function inputReaderLoad() {
     try {
@@ -27928,10 +27924,11 @@
     if (files === null) {
       return;
     }
-    if (files.length === 0) {
+    const file = files[0];
+    if (file === void 0) {
       return;
     }
-    readFile(files);
+    readFile(file);
   }
 
   // src/main.ts
