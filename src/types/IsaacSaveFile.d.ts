@@ -1,4 +1,4 @@
-import type { ChunkType } from "./ChunkType.js";
+import type { ChunkType } from "../enums/ChunkType.js";
 
 declare global {
   class IsaacSaveFile {

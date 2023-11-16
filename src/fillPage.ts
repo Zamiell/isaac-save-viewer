@@ -3,9 +3,9 @@ import * as achievements from "./data/achievements.json";
 import * as easterEggs from "./data/easterEggs.json";
 import * as itemPools from "./data/itempools.json";
 import * as items from "./data/items.json";
+import { ChunkType } from "./enums/ChunkType.js";
 import { ITEM_POOL_NAME_MAP } from "./itemPoolNameMap.js";
 import { hideSelectSaveFileArea } from "./selectSaveFileSubroutines.js";
-import { ChunkType } from "./types/ChunkType.js";
 import { getElement, hide, show, toggle } from "./utils.js";
 
 type Prefix = "achievements" | "collectibles" | "easter-eggs";
