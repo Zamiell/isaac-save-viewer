@@ -1,15 +1,19 @@
 {
   "$schema": "https://raw.githubusercontent.com/streetsidesoftware/cspell/main/cspell.schema.json",
   "version": "0.2",
+  "import": ["@cspell/cspell-bundled-dicts"],
   "files": ["**"],
   "enableFiletypes": ["*"],
   "enableGlobDot": true,
   "useGitignore": true,
   "ignorePaths": [
+    "*.mp3",
     "*.pyc",
+    "*.svg",
     ".git/**",
     ".yarn/**",
     "dist/**",
+    "LICENSE",
     "node_modules/**",
     "package-lock.json",
     "pnpm-lock.yaml",
@@ -29,6 +33,7 @@
   "words": [
     "autocrlf",
     "Bulma",
+    "corepack",
     "CUTSCENE",
     "dbaeumer",
     "esbenp",

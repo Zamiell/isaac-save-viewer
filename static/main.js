@@ -6,6 +6,11 @@
       __defProp(target, name, { get: all[name], enumerable: true });
   };
 
+  // node_modules/isaacscript-common-ts/dist/constants.js
+  var SECOND_IN_MILLISECONDS = 1e3;
+  var MINUTE_IN_MILLISECONDS = 60 * SECOND_IN_MILLISECONDS;
+  var HOUR_IN_MILLISECONDS = 60 * MINUTE_IN_MILLISECONDS;
+
   // node_modules/isaacscript-common-ts/dist/types/ReadonlySet.js
   var ReadonlySet = Set;
 
@@ -27605,11 +27610,11 @@
   function getSelectSaveFileButton() {
     return getElement(CHOOSE_SAVE_FILE_BUTTON_ID);
   }
-  function selectSaveFileError(err) {
+  function selectSaveFileError(error) {
     const errorElement = getElement(CHOOSE_SAVE_FILE_ERROR_ID);
     show(errorElement);
     const errorTextElement = getElement(CHOOSE_SAVE_FILE_ERROR_TEXT_ID);
-    errorTextElement.innerHTML = `${err}`;
+    errorTextElement.innerHTML = `${error}`;
   }
   function hideSelectSaveFileArea() {
     const saveFileArea = getElement(CHOOSE_SAVE_FILE_COLUMN_ID);
@@ -27630,7 +27635,7 @@
     show(saveFileStats);
   }
   function fillAchievements(isaacSaveFile) {
-    const chunk = isaacSaveFile.chunks[ChunkType.ACHIEVEMENTS - 1];
+    const chunk = isaacSaveFile.chunks[1 /* ACHIEVEMENTS */ - 1];
     if (chunk === void 0) {
       throw new Error("Failed to get the achievement chunk.");
     }
@@ -27661,7 +27666,7 @@
     addRow(tBody, rowData);
   }
   function fillCollectibles(isaacSaveFile) {
-    const chunk = isaacSaveFile.chunks[ChunkType.COLLECTIBLES - 1];
+    const chunk = isaacSaveFile.chunks[4 /* COLLECTIBLES */ - 1];
     if (chunk === void 0) {
       throw new Error("Failed to get the collectibles chunk.");
     }
@@ -27737,7 +27742,7 @@
     return pools.join(", ");
   }
   function fillEasterEggs(isaacSaveFile) {
-    const chunk = isaacSaveFile.chunks[ChunkType.SPECIAL_SEED_COUNTERS - 1];
+    const chunk = isaacSaveFile.chunks[10 /* SPECIAL_SEED_COUNTERS */ - 1];
     if (chunk === void 0) {
       throw new Error("Failed to get the easter egg chunk.");
     }
@@ -27838,14 +27843,10 @@
   var AFTERBIRTH_PERSISTENT_HEADER = "ISAACNGSAVE08R";
   var AFTERBIRTH_PLUS_AND_REPENTANCE_PERSISTENT_HEADER = "ISAACNGSAVE09R";
   var NUM_AFTERBIRTH_PLUS_ACHIEVEMENTS = 404;
-  function readFile(files) {
-    const firstFile = files[0];
-    if (firstFile === void 0) {
-      throw new Error("Failed to get the first file from the file list.");
-    }
+  function readFile(file) {
     const fileReader = new FileReader();
     fileReader.addEventListener("load", inputReaderLoad);
-    fileReader.readAsArrayBuffer(firstFile);
+    fileReader.readAsArrayBuffer(file);
   }
   function inputReaderLoad() {
     try {
@@ -27900,7 +27901,7 @@
     return string.replaceAll("\0", "");
   }
   function verifyNotAfterbirthPlus(isaacSaveFile) {
-    const chunk = isaacSaveFile.chunks[ChunkType.ACHIEVEMENTS - 1];
+    const chunk = isaacSaveFile.chunks[1 /* ACHIEVEMENTS */ - 1];
     if (chunk === void 0) {
       throw new Error("Failed to get the achievements chunk.");
     }
@@ -27928,10 +27929,11 @@
     if (files === null) {
       return;
     }
-    if (files.length === 0) {
+    const file = files[0];
+    if (file === void 0) {
       return;
     }
-    readFile(files);
+    readFile(file);
   }
 
   // src/main.ts

@@ -16,7 +16,7 @@ const HIDE_TEXT = "Hide";
 const SHOW_TEXT = "Show";
 
 export function fillPage(isaacSaveFile: IsaacSaveFile): void {
-  // Build out the tables on the page.
+  // Build the tables on the page.
   fillAchievements(isaacSaveFile);
   fillCollectibles(isaacSaveFile);
   fillEasterEggs(isaacSaveFile);
@@ -144,7 +144,7 @@ function getCollectibleDescription(
   return itemDescription;
 }
 
-function getPoolsForCollectible(i: number) {
+function getPoolsForCollectible(i: number): readonly string[] {
   const id = i.toString();
 
   // The "itempools.json" file was generated automatically from the "itempools.xml" file using an
@@ -166,7 +166,7 @@ function getPoolsForCollectible(i: number) {
   return pools;
 }
 
-function getPoolsText(pools: string[]) {
+function getPoolsText(pools: readonly string[]) {
   if (pools.length === 0) {
     return "n/a (not present in any pools)";
   }
@@ -235,7 +235,7 @@ function getEasterEggDescription(id: number): EasterEggDescription | undefined {
 
 function fillTable(
   prefix: Prefix,
-  things: number[],
+  things: readonly number[],
   numTotal: number,
   addRowFunc: (i: number, tBody: HTMLTableElement) => void,
 ) {
@@ -283,7 +283,7 @@ function fillTable(
   });
 }
 
-function addRow(tBody: HTMLTableElement, rowData: string[]) {
+function addRow(tBody: HTMLTableElement, rowData: readonly string[]) {
   const row = tBody.insertRow();
   for (const data of rowData) {
     row.insertCell().innerHTML = data;
