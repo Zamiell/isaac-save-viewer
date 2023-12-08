@@ -4437,7 +4437,7 @@ __metadata:
   resolution: "isaac-save-viewer@workspace:."
   dependencies:
     esbuild: "npm:^0.19.8"
-    isaacscript: "npm:^3.29.0"
+    isaacscript: "npm:^3.30.0"
     isaacscript-common-node: "npm:^1.4.0"
     isaacscript-common-ts: "npm:^11.6.0"
     isaacscript-lint: "npm:^6.11.0"
@@ -4537,9 +4537,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"isaacscript@npm:^3.29.0":
-  version: 3.29.0
-  resolution: "isaacscript@npm:3.29.0"
+"isaacscript@npm:^3.30.0":
+  version: 3.30.0
+  resolution: "isaacscript@npm:3.30.0"
   dependencies:
     "@commander-js/extra-typings": "npm:^11.1.0"
     "@zamiell/sync-directory": "npm:^6.0.5"
@@ -4564,7 +4564,7 @@ __metadata:
       optional: true
   bin:
     isaacscript: dist/main.js
-  checksum: 274bae5eaea78c8891bf00120e251047759ce2d7aa6b9996d780f4d7c63e0ccc5de219a3f4a22804b73a35aa7b57b9798fbfa14e9a19f6206b71743c7f9db700
+  checksum: bb2891d4af4b7a415e3b9b9c01d4cda56a54a19738e2308123b749e0f302f6d858e2c860fd7b1f8dcb0022cc35dc6d5d545051175d785f3658175eb49d79f096
   languageName: node
   linkType: hard
 

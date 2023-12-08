@@ -24,7 +24,7 @@
   },
   "devDependencies": {
     "esbuild": "^0.19.8",
-    "isaacscript": "^3.29.0",
+    "isaacscript": "^3.30.0",
     "isaacscript-common-node": "^1.4.0",
     "isaacscript-lint": "^6.11.0",
     "isaacscript-tsconfig": "^5.0.0",
