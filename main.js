@@ -6,6 +6,11 @@
       __defProp(target, name, { get: all[name], enumerable: true });
   };
 
+  // node_modules/isaacscript-common-ts/dist/constants.js
+  var SECOND_IN_MILLISECONDS = 1e3;
+  var MINUTE_IN_MILLISECONDS = 60 * SECOND_IN_MILLISECONDS;
+  var HOUR_IN_MILLISECONDS = 60 * MINUTE_IN_MILLISECONDS;
+
   // node_modules/isaacscript-common-ts/dist/types/ReadonlySet.js
   var ReadonlySet = Set;
 
