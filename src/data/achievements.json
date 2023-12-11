@@ -1,4 +1,10 @@
 {
+  "NEW": {
+    "link": "Unknown",
+    "name": "Unknown Achievement",
+    "inGameDescription": "undefined",
+    "unlockDescription": "Tracker doesn't know this achievement yet"
+  },
   "1": {
     "link": "Magdalene",
     "name": "Magdalene",
