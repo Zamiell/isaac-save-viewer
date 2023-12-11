@@ -671,13 +671,13 @@
     "97": () => _710,
     "98": () => _810,
     "99": () => _910,
-    NEW_ACHIEVEMENT: () => NEW_ACHIEVEMENT,
+    NEW: () => NEW,
     default: () => achievements_default
   });
-  var NEW_ACHIEVEMENT = {
-    link: "",
+  var NEW = {
+    link: "Unknown",
     name: "Unknown Achievement",
-    inGameDescription: "",
+    inGameDescription: "undefined",
     unlockDescription: "Tracker doesn't know this achievement yet"
   };
   var _ = {
@@ -4503,7 +4503,7 @@
     unlockDescription: "Unlock all the other achievements and collect every item in the game"
   };
   var achievements_default = {
-    NEW_ACHIEVEMENT,
+    NEW,
     "1": _,
     "2": _2,
     "3": _3,
@@ -19167,10 +19167,10 @@
     "97": () => _740,
     "98": () => _840,
     "99": () => _930,
-    NEW: () => NEW,
+    NEW: () => NEW2,
     default: () => items_default
   });
-  var NEW = {
+  var NEW2 = {
     name: "Unknown Item",
     shown: true,
     text: "Tracker doesn't know this item yet",
@@ -26445,7 +26445,7 @@
     introduced_in: "Repentance"
   };
   var items_default = {
-    NEW,
+    NEW: NEW2,
     "-1": _130,
     "1": _131,
     "2": _138,
@@ -27661,16 +27661,12 @@
     const rowData = [];
     const id = i.toString();
     rowData.push(id);
-    const newAchievementKey = "NEW_ACHIEVEMENT";
-    let key = id;
-    if (achievements_exports[key] === void 0) {
-      key = newAchievementKey;
-    }
-    const description = achievements_exports[key];
-    const { name, link, inGameDescription, unlockDescription } = description;
+    const achievementsJSON = achievements_exports;
+    const achievement = achievementsJSON[id] ?? NEW;
+    const { name, link, inGameDescription, unlockDescription } = achievement;
     const linkedName = link === "" ? name : `<a href=${WIKI_PREFIX}${link}>${name}</a>`;
     rowData.push(linkedName);
-    const image = key == newAchievementKey ? "" : `<img src="img/achievements/${id}.png" />`;
+    const image = achievement.name === NEW.name ? "" : `<img src="img/achievements/${id}.png" />`;
     rowData.push(image, inGameDescription, unlockDescription);
     addRow(tBody, rowData);
   }

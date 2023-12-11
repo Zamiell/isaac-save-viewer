@@ -10,6 +10,13 @@ import { getElement, hide, show, toggle } from "./utils.js";
 
 type Prefix = "achievements" | "collectibles" | "easter-eggs";
 
+interface AchievementJSON {
+  link: string;
+  name: string;
+  inGameDescription: string;
+  unlockDescription: string;
+}
+
 const SAVE_FILE_STATS_ID = "save-file-stats";
 const WIKI_PREFIX = "https://bindingofisaacrebirth.fandom.com/wiki/";
 const HIDE_TEXT = "Hide";
@@ -51,24 +58,18 @@ function fillAchievementsAddRow(i: number, tBody: HTMLTableElement) {
   const id = i.toString();
   rowData.push(id);
 
-  const newAchievementKey = "NEW_ACHIEVEMENT";
-  let key = id as keyof typeof achievements;
-
-  // Unknown achievement.
-  if(achievements[key] === undefined){
-    key = newAchievementKey;
-  }
-
-  const description = achievements[key];
-  const { name, link, inGameDescription, unlockDescription } = description;
+  const achievementsJSON = achievements as Record<string, AchievementJSON>;
+  const achievement = achievementsJSON[id] ?? achievements.NEW;
+  const { name, link, inGameDescription, unlockDescription } = achievement;
 
   const linkedName =
     link === "" ? name : `<a href=${WIKI_PREFIX}${link}>${name}</a>`;
   rowData.push(linkedName);
 
-  // Only add image if achievement is known.
   const image =
-      key == newAchievementKey ? "" : `<img src="img/achievements/${id}.png" />`;
+    achievement.name === achievements.NEW.name
+      ? ""
+      : `<img src="img/achievements/${id}.png" />`;
 
   rowData.push(image, inGameDescription, unlockDescription);
 
