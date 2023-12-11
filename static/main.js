@@ -671,8 +671,15 @@
     "97": () => _710,
     "98": () => _810,
     "99": () => _910,
+    NEW_ACHIEVEMENT: () => NEW_ACHIEVEMENT,
     default: () => achievements_default
   });
+  var NEW_ACHIEVEMENT = {
+    link: "",
+    name: "Unknown Achievement",
+    inGameDescription: "",
+    unlockDescription: "Tracker doesn't know this achievement yet"
+  };
   var _ = {
     link: "Magdalene",
     name: "Magdalene",
@@ -4496,6 +4503,7 @@
     unlockDescription: "Unlock all the other achievements and collect every item in the game"
   };
   var achievements_default = {
+    NEW_ACHIEVEMENT,
     "1": _,
     "2": _2,
     "3": _3,
@@ -27653,15 +27661,16 @@
     const rowData = [];
     const id = i.toString();
     rowData.push(id);
-    const key = id;
-    const description = achievements_exports[key];
-    if (description === void 0) {
-      throw new Error(`Failed to find the achievement for ID: ${id}`);
+    const newAchievementKey = "NEW_ACHIEVEMENT";
+    let key = id;
+    if (achievements_exports[key] === void 0) {
+      key = newAchievementKey;
     }
+    const description = achievements_exports[key];
     const { name, link, inGameDescription, unlockDescription } = description;
     const linkedName = link === "" ? name : `<a href=${WIKI_PREFIX}${link}>${name}</a>`;
     rowData.push(linkedName);
-    const image = `<img src="img/achievements/${id}.png" />`;
+    const image = key == newAchievementKey ? "" : `<img src="img/achievements/${id}.png" />`;
     rowData.push(image, inGameDescription, unlockDescription);
     addRow(tBody, rowData);
   }

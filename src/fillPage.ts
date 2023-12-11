@@ -51,19 +51,25 @@ function fillAchievementsAddRow(i: number, tBody: HTMLTableElement) {
   const id = i.toString();
   rowData.push(id);
 
-  const key = id as keyof typeof achievements;
-  const description = achievements[key];
-  // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
-  if (description === undefined) {
-    throw new Error(`Failed to find the achievement for ID: ${id}`);
+  const newAchievementKey = "NEW_ACHIEVEMENT";
+  let key = id as keyof typeof achievements;
+
+  // Unknown achievement.
+  if(achievements[key] === undefined){
+    key = newAchievementKey;
   }
+
+  const description = achievements[key];
   const { name, link, inGameDescription, unlockDescription } = description;
 
   const linkedName =
     link === "" ? name : `<a href=${WIKI_PREFIX}${link}>${name}</a>`;
   rowData.push(linkedName);
 
-  const image = `<img src="img/achievements/${id}.png" />`;
+  // Only add image if achievement is known.
+  const image =
+      key == newAchievementKey ? "" : `<img src="img/achievements/${id}.png" />`;
+
   rowData.push(image, inGameDescription, unlockDescription);
 
   addRow(tBody, rowData);
