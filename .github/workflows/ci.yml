@@ -10,17 +10,6 @@ jobs:
       - uses: ./.github/workflows/setup
       - run: npm run build
 
-      # @template-customization-start
-
-      - name: If publishing, upload build output
-        if: "needs.pr-check.outputs.number != 'null'"
-        uses: actions/upload-artifact@v3
-        with:
-          name: static-directory
-          path: ./static
-
-      # @template-customization-end
-
   lint:
     runs-on: ubuntu-latest
     steps:
@@ -30,25 +19,21 @@ jobs:
 
   # @template-customization-start
 
-  deploy:
-    if: "needs.pr-check.outputs.number != 'null'"
+  deploy_website:
+    if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
     needs: [build, lint]
     runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      id-token: write
     steps:
       - uses: actions/checkout@v4
       - uses: ./.github/workflows/setup
-
-      - name: Download mod output
-        uses: actions/download-artifact@v3
+      - run: npm run build
+      - uses: actions/upload-pages-artifact@v2
         with:
-          name: static-directory
           path: ./static
-
-      - name: Deploy to GitHub pages
-        uses: peaceiris/actions-gh-pages@v3
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./static
+      - uses: actions/deploy-pages@v2
 
   discord:
     name: Discord Failure Notification

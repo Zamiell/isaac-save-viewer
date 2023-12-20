@@ -9,7 +9,7 @@ const config = {
     "eslint-config-isaacscript/base",
   ],
 
-  // Don't bother linting the compiled output.
+  // Don't bother linting compiled output.
   // @template-ignore-next-line
   /// ignorePatterns: [],
   // @template-customization-start

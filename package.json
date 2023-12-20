@@ -20,15 +20,15 @@
     "update": "isaacscript update"
   },
   "dependencies": {
-    "isaacscript-common-ts": "^11.6.0"
+    "isaacscript-common-ts": "^13.5.1"
   },
   "devDependencies": {
-    "esbuild": "^0.19.8",
-    "isaacscript": "^3.30.0",
-    "isaacscript-common-node": "^1.4.0",
-    "isaacscript-lint": "^6.11.0",
+    "esbuild": "^0.19.10",
+    "isaacscript": "^3.36.1",
+    "isaacscript-common-node": "^3.0.0",
+    "isaacscript-lint": "^6.13.0",
     "isaacscript-tsconfig": "^5.0.0",
-    "tsx": "^4.6.2",
+    "tsx": "^4.7.0",
     "typescript": "5.2.2"
   },
   "packageManager": "yarn@4.0.2"
