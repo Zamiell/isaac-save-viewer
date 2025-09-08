@@ -6,5 +6,5 @@ This is the source code for the [Isaac Save Viewer](https://zamiell.github.io/is
 - It is written using [TypeScript](https://www.typescriptlang.org/).
 - It uses [webpack](https://webpack.js.org/) for bundling.
 - It uses [Bulma](https://bulma.io/) for CSS.
-- The achievement images are taken from the [Isaac wiki](https://bindingofisaacrebirth.fandom.com/wiki/Binding_of_Isaac:_Rebirth_Wiki).
+- The achievement images are taken from the [Isaac wiki](https://bindingofisaacrebirth.wiki.gg/wiki/Binding_of_Isaac:_Rebirth_Wiki).
 - The "items.json" file and collectible images are taken from the [Rebirth Item Tracker](https://github.com/Rchardon/RebirthItemTracker).
