@@ -1,35 +1,35 @@
-import { $, lintScript } from "isaacscript-common-node";
+import { $, lintScript } from "complete-node";
 
-await lintScript(async () => {
-  const promises = [
+await lintScript(import.meta.dirname, async () => {
+  await Promise.all([
+    // Use TypeScript to type-check the code.
+    $`tsc --noEmit`,
+    $`tsc --noEmit --project ./scripts/tsconfig.json`,
+
+    // Use ESLint to lint the TypeScript code.
+    // - "--max-warnings 0" makes warnings fail, since we set all ESLint errors to warnings.
+    $`eslint --max-warnings 0 .`,
+
     // Use Prettier to check formatting.
     // - "--log-level=warn" makes it only output errors.
     $`prettier --log-level=warn --check .`,
 
-    // Type-check the code using the TypeScript compiler.
-    $`tsc --noEmit`,
+    // Use Knip to check for unused files, exports, and dependencies.
+    // - "--no-progress" - Don’t show dynamic progress updates. Progress is automatically disabled
+    //   in CI environments.
+    // - "--treat-config-hints-as-errors" - Exit with non-zero code (1) if there are any
+    //   configuration hints.
+    $`knip --no-progress --treat-config-hints-as-errors`,
 
-    // Use ESLint to lint the TypeScript.
-    // - "--max-warnings 0" makes warnings fail, since we set all ESLint errors to warnings.
-    $`eslint --max-warnings 0 .`,
-
-    // Check for unused files, dependencies, and exports.
-    $`knip --no-progress`,
-
-    // Spell check every file using CSpell.
+    // Use CSpell to spell check every file.
     // - "--no-progress" and "--no-summary" make it only output errors.
-    $`cspell --no-progress --no-summary .`,
+    $`cspell --no-progress --no-summary`,
 
-    // Check for unused CSpell words.
+    // Check for unused words in the CSpell configuration file.
     $`cspell-check-unused-words`,
 
-    // @template-customization-start
-
-    // Check for base file updates.
-    $`isaacscript check-ts --ignore build.ts,knip.jsonc,tsconfig.json`,
-
-    // @template-customization-end
-  ];
-
-  await Promise.all(promises);
+    // Check for template updates.
+    // @template-ignore-next-line
+    $`complete-cli check --ignore build.ts,LICENSE`,
+  ]);
 });

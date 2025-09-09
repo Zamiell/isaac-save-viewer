@@ -1,4 +1,4 @@
-import { ReadonlySet } from "isaacscript-common-ts";
+import { ReadonlySet } from "complete-common";
 import { ChunkType } from "./enums/ChunkType.js";
 import { fillPage } from "./fillPage.js";
 import { selectSaveFileError } from "./selectSaveFileSubroutines.js";

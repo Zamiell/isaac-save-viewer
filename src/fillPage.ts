@@ -1,4 +1,4 @@
-import { parseIntSafe } from "isaacscript-common-ts";
+import { parseIntSafe } from "complete-common";
 import * as achievements from "./data/achievements.json";
 import * as easterEggs from "./data/easterEggs.json";
 import * as itemPools from "./data/itempools.json";
@@ -263,8 +263,8 @@ function fillTable(
     // Some arrays contain data that is not contiguous.
     if (gotten) {
       if (
-        (prefix === "collectibles" && !isValidCollectibleID(i)) ||
-        (prefix === "easter-eggs" && !isValidEasterEgg(i))
+        (prefix === "collectibles" && !isValidCollectibleID(i))
+        || (prefix === "easter-eggs" && !isValidEasterEgg(i))
       ) {
         continue;
       }

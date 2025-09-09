@@ -1,4 +1,4 @@
-import { ReadonlyMap } from "isaacscript-common-ts";
+import { ReadonlyMap } from "complete-common";
 
 /** Listed in order of how they appear in the "itempools.xml" file. */
 export const ITEM_POOL_NAME_MAP = new ReadonlyMap<string, string>([
