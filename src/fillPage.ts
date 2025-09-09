@@ -48,7 +48,7 @@ function fillAchievements(isaacSaveFile: IsaacSaveFile) {
     "achievements",
     ourAchievements,
     numAchievements,
-    fillAchievementsAddRow
+    fillAchievementsAddRow,
   );
 }
 
@@ -92,7 +92,7 @@ function fillCollectibles(isaacSaveFile: IsaacSaveFile) {
     "collectibles",
     ourCollectibles,
     numCollectibles,
-    fillCollectiblesAddRow
+    fillCollectiblesAddRow,
   );
 }
 
@@ -122,7 +122,7 @@ function fillCollectiblesAddRow(i: number, tBody: HTMLTableElement) {
   const { name } = collectibleDescription;
   if (typeof name !== "string") {
     throw new TypeError(
-      `Collectible ${i} did not have a name in the JSON description.`
+      `Collectible ${i} did not have a name in the JSON description.`,
     );
   }
 
@@ -143,7 +143,7 @@ function fillCollectiblesAddRow(i: number, tBody: HTMLTableElement) {
 }
 
 function getCollectibleDescription(
-  id: number
+  id: number,
 ): Record<string, unknown> | undefined {
   const key = id as unknown as keyof typeof items;
   const itemDescription = items[key];
@@ -244,7 +244,7 @@ function fillTable(
   prefix: Prefix,
   things: readonly number[],
   numTotal: number,
-  addRowFunc: (i: number, tBody: HTMLTableElement) => void
+  addRowFunc: (i: number, tBody: HTMLTableElement) => void,
 ) {
   const tableElement = getElement(`${prefix}-table`);
   const tBodyElement = getElement(`${prefix}-table-tbody`) as HTMLTableElement;
