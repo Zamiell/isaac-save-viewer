@@ -30,7 +30,6 @@ await lintScript(async () => {
 
     // Check for template updates.
     $`complete-cli check`,
-
   ];
 
   await Promise.all(promises);

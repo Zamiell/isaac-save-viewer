@@ -13,22 +13,21 @@ export default defineConfig(
   {
     rules: {
       // Insert changed or disabled rules here, if necessary.
-          // @template-customization-start
-    "no-param-reassign": "off",
-    "complete/no-number-enums": "off",
-    // @template-customization-end
-
+      // @template-customization-start
+      "no-param-reassign": "off",
+      "complete/no-number-enums": "off",
+      // @template-customization-end
     },
   },
 
   // @template-customization-start
   // Don't bother linting compiled output.
   {
-    ignore: [    "static/main.js",
-    "static/lib/KaitaiStream.js",
-    "static/lib/IsaacSaveFile.js",
-    ]
-  }
+    ignore: [
+      "static/main.js",
+      "static/lib/KaitaiStream.js",
+      "static/lib/IsaacSaveFile.js",
+    ],
+  },
   // @template-customization-end
-
 );

@@ -263,8 +263,8 @@ function fillTable(
     // Some arrays contain data that is not contiguous.
     if (gotten) {
       if (
-        (prefix === "collectibles" && !isValidCollectibleID(i)) ||
-        (prefix === "easter-eggs" && !isValidEasterEgg(i))
+        (prefix === "collectibles" && !isValidCollectibleID(i))
+        || (prefix === "easter-eggs" && !isValidEasterEgg(i))
       ) {
         continue;
       }
