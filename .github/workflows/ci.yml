@@ -35,9 +35,12 @@ jobs:
           path: ./static
       - uses: actions/deploy-pages@v2
 
+  # @template-customization-end
+
   discord:
     name: Discord Failure Notification
-    needs: [build, lint, deploy]
+    # @template-ignore-next-line
+    needs: [build, lint, deploy_website]
     if: failure()
     runs-on: ubuntu-latest
     steps:
@@ -46,5 +49,3 @@ jobs:
           webhook: ${{ secrets.DISCORD_WEBHOOK }}
           status: failure
           title: ""
-
-  # @template-customization-end
