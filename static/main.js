@@ -27625,7 +27625,7 @@
 
   // src/fillPage.ts
   var SAVE_FILE_STATS_ID = "save-file-stats";
-  var WIKI_PREFIX = "https://bindingofisaacrebirth.fandom.com/wiki/";
+  var WIKI_PREFIX = "https://bindingofisaacrebirth.wiki.gg/wiki/";
   var HIDE_TEXT = "Hide";
   var SHOW_TEXT = "Show";
   function fillPage(isaacSaveFile) {
