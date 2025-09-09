@@ -1,7 +1,7 @@
 import { $, lintScript } from "complete-node";
 
-await lintScript(async () => {
-  const promises = [
+await lintScript(import.meta.dirname, async () => {
+  await Promise.all([
     // Use TypeScript to type-check the code.
     $`tsc --noEmit`,
     $`tsc --noEmit --project ./scripts/tsconfig.json`,
@@ -29,8 +29,7 @@ await lintScript(async () => {
     $`cspell-check-unused-words`,
 
     // Check for template updates.
-    $`complete-cli check`,
-  ];
-
-  await Promise.all(promises);
+    // @template-ignore-next-line
+    $`complete-cli check --ignore build.ts,LICENSE`,
+  ]);
 });

@@ -2,15 +2,24 @@
 {
   "$schema": "https://raw.githubusercontent.com/complete-ts/complete/main/packages/complete-tsconfig/schemas/tsconfig-strict-schema.json",
 
-  // We extend the browser IsaacScript config:
-  // https://github.com/IsaacScript/isaacscript/blob/main/packages/isaacscript-tsconfig/tsconfig.browser.json
   "extends": [
     // https://github.com/complete-ts/complete/blob/main/packages/complete-tsconfig/tsconfig.base.json
     "complete-tsconfig/tsconfig.base.json",
 
+    // https://github.com/complete-ts/complete/blob/main/packages/complete-tsconfig/tsconfig.node.json
+    // @template-ignore-next-line
+    // "complete-tsconfig/tsconfig.node.json",
+
+    // @template-customization-start
+
     // https://github.com/complete-ts/complete/blob/main/packages/complete-tsconfig/tsconfig.browser.json
+    // @template-ignore-next-line
     "complete-tsconfig/tsconfig.browser.json",
+
+    // @template-customization-end
   ],
+
+  // @template-customization-start
 
   // https://www.typescriptlang.org/docs/handbook/compiler-options.html
   "compilerOptions": {
@@ -21,4 +30,6 @@
     // statements in the ".d.ts" files resolve properly.
     "skipLibCheck": false,
   },
+
+  // @template-customization-end
 }
